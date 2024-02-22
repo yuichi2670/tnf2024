@@ -1,0 +1,7 @@
+@use "global" as *;
+
+.c-section-title {
+    font-size: rem(28);
+    line-height: calc(57/28);
+    font-weight: 700;
+}

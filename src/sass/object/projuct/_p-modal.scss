@@ -1,0 +1,257 @@
+@use "global" as *;
+
+//ポップアップ
+
+.p-modal {
+    // display: none;
+    position: fixed;
+    z-index: 10000; /*サイトによってここの数値は調整 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.p-modal--2023.is-open--2023,
+.p-modal--2022.is-open--2022,
+.p-modal--2021.is-open--2021 {
+    opacity: 1;
+    visibility: visible;
+    animation  : bgOpenAnime 0.4s ease-in-out;
+}
+
+@keyframes bgOpenAnime { 
+    0% { opacity: 0 }
+  100% { opacity: 1 }
+ }
+
+.p-modal__bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.9);
+
+    
+}
+
+.p-modal__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    max-width: rem(600);
+    padding: rem(13) 0;
+    background-color: #C7D8AC;
+    overflow-y: scroll;
+
+    @include mq(md) {
+        max-width: rem(1184);
+    }
+}
+
+.p-modal__contents {
+    @include mq(md) {
+        padding-left: rem(34);
+        padding-right: rem(65);
+    }
+}
+
+.p-modal__logo {
+    @include mq(md) {
+        padding-left: rem(34);
+        padding-right: rem(65);
+    }
+}
+
+
+.p-modal__header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: rem(13);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: rem(100);
+    padding-left: rem(5);
+    padding-right: rem(5);
+    z-index: 10;
+
+    @include mq(md) {
+        top: rem(68);
+    }
+}
+
+.p-modal__item {
+    margin-top: rem(100);
+    @include mq(md) {
+        display: flex;
+        margin-top: rem(185);
+    }
+}
+
+.p-modal__close {
+    cursor: pointer;
+    width: rem(22);
+    height: rem(22);
+    position: relative;
+    z-index: 10000;
+    margin-right: rem(10);
+
+    @include mq(md) {
+        width: rem(60);
+        height: rem(60);
+        margin-top: rem(-30);
+        margin-right: rem(25);
+    }
+}
+
+.p-modal__close span {
+    width: rem(30);
+    height: rem(1);
+    background-color: #fff;
+    position: absolute;
+    content: "";
+    transition: 0.2s ease;
+
+    @include mq(md) {
+        width: rem(83);
+        
+    }
+}
+
+.p-modal__close span:nth-child(1) {
+    top: rem(10.5);
+    right: rem(-4);
+    transform: rotate(-45deg);
+
+    @include mq(md) {
+        top: rem(30);
+        right: rem(-12);
+        
+    }
+}
+
+.p-modal__close span:nth-child(2) {
+    top: rem(10.5);
+    right: rem(-4);
+    transform: rotate(45deg);
+    @include mq(md) {
+        top: rem(30);
+        right: rem(-12);
+        border: initial;
+    }
+}
+
+.p-modal__images {
+    margin-bottom: 0!important;
+    pointer-events: none;
+    height: 100%;
+    position: relative;
+    @include mq(md) {
+        width: 51%;
+
+    }
+}
+
+.p-modal__images .slick-slide {
+    position: relative;
+    margin-bottom: 0;   
+}
+
+.p-modal__images .slick-slide::before {
+    content: "";
+    display: block;
+    padding-top: 62.388059701%;
+}
+
+.p-modal__images .slick-slide img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.p-modal__image img {
+    aspect-ratio: 335/209;
+}
+
+.p-modal__comments {
+    padding: rem(32) rem(19) rem(46);
+    font-family: $jp-font;
+
+    @include mq(md) {
+        width: 49%;
+        padding-top: 0;
+    }
+}
+
+.p-modal__details:not(:first-child) {
+    margin-top: rem(60);
+    @include mq(md) {
+        width: 49%;
+        padding-top: 0;
+    }
+}
+
+.p-modal__text {
+    font-weight: bold;
+    line-height: 2;
+
+    @include mq(md) {
+        margin-top: rem(-10);
+    }
+}
+
+.p-modal__text-sub {
+    margin-top: rem(32);
+    font-size: rem(13);
+    line-height: calc(26/13);
+    font-weight: 400;
+}
+
+.p-modal__text-sub p:not(:first-child) {
+    margin-top: calc(rem(13) * (26 / 13));
+}
+
+
+/*======================================================
+    モーダルのページネーション
+======================================================*/
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: rem(12);
+    bottom: rem(10);
+    left: rem(10);
+    z-index: 10;
+
+}
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 rem(3) 0 0;
+}
+.p-modal__pagination span {
+    width: rem(10);
+    height: rem(10);
+    background-color: transparent;
+    border: 1px solid #fff;
+    opacity: 1;
+    margin: 0;
+}
+/* ページネーションのサイズと色 */
+.p-modal__pagination .swiper-pagination-bullet-active {
+  background-color: #fff;
+}
+/* 画像サイズ調整 */
+.swiper-slide img {
+  height: auto;
+  width: 100%;
+}

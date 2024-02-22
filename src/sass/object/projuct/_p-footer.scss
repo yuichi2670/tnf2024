@@ -1,0 +1,28 @@
+@use "global" as *;
+
+.p-footer {
+    margin-top: rem(41);
+}
+
+.p-footer__staff {
+    font-family: $en-font-second;
+    text-align: center;
+    font-size: rem(10);
+    line-height: calc(16/10);
+}
+
+.p-footer__logo {
+    width: rem(74);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: rem(46);
+}
+
+.p-footer__copy {
+    margin-top: rem(37);
+    text-align: center;
+    line-height: calc(12/10);
+    font-size: rem(10);
+    font-family: $en-font-second;
+    margin-bottom: rem(17);
+}

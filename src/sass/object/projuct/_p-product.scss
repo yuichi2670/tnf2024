@@ -1,0 +1,84 @@
+@use "global" as *;
+
+.p-product {
+
+}
+
+.p-product__title {
+
+}
+
+.p-product__unisex {
+    margin-top: rem(30);
+}
+
+.p-product__kids {
+    margin-top: rem(60);
+}
+
+.p-product__type {
+    
+    font-size: rem(20);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.p-product__type span {
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    display: block;
+    margin-left: rem(10);
+}
+
+.p-product__lists {
+    margin-top: rem(10);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(#{rem(160)}, 1fr));
+    gap: rem(20) rem(25);
+}
+
+.p-product__list {
+
+}
+
+.p-product__image {
+
+}
+
+.p-product__info {
+    text-align: center;
+}
+
+.p-product__number {
+    font-size: rem(10);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    line-height: 2;
+
+}
+
+.p-product__name {
+    font-weight: 600;
+    line-height: calc(20/16);
+}
+
+.p-product__name span {
+    display: block;
+    font-size: rem(10);
+    font-family: $jp-font;
+}
+
+.p-product__btn {
+    width: rem(160);
+    height: rem(30);
+    line-height: rem(30);
+    color: #97CE1C;
+    border: 1px solid #97CE1C;
+    border-radius: rem(20);
+    font-size: rem(15);
+    margin-top: rem(8);
+    text-align: center;
+    text-transform: uppercase;
+}

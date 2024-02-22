@@ -1,0 +1,31 @@
+@use "global" as *;
+
+
+.p-archive {
+    margin-top: rem(100);
+}
+
+.p-archive__items {
+    margin-top: rem(23);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(3, auto);
+    gap: rem(5);
+    
+    @include mq(md) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: rem(12);
+    }
+}
+
+.p-archive__item button {
+    padding: 0;
+}
+
+.p-archive__image {
+
+}
+
+.p-archive__image img {
+    aspect-ratio: 380/475;
+}
