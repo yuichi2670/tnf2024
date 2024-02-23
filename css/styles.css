@@ -283,6 +283,97 @@ select::-ms-expand {
   margin-bottom: 1.0625rem;
 }
 
+.p-information__inner {
+  padding-bottom: 30px;
+  padding-bottom: 1.875rem;
+  padding-top: 57px;
+  padding-top: 3.5625rem;
+}
+
+.p-information__logo {
+  padding: 0 12px;
+  padding: 0 0.75rem;
+}
+
+.p-information__contents {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.p-information__images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  gap: 2rem;
+  padding: 0 26px;
+  padding: 0 1.625rem;
+  margin-top: 56px;
+  margin-top: 3.5rem;
+}
+
+.p-information__qr {
+  padding: 0 26px;
+  padding: 0 1.625rem;
+  margin-top: 56px;
+  margin-top: 3.5rem;
+}
+
+.p-information__title {
+  margin-top: 32px;
+  margin-top: 2rem;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 2.0714285714;
+  text-align: center;
+}
+
+.p-information__text {
+  margin-top: 22px;
+  margin-top: 1.375rem;
+  font-size: 11px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 2.1818181818;
+  text-align: center;
+}
+
+.p-information__text p {
+  margin-top: 24px;
+  margin-top: 1.5rem;
+}
+
+.p-information__btn {
+  margin-top: 57px;
+  margin-top: 3.5625rem;
+  color: #97ce1c;
+  width: 300px;
+  width: 18.75rem;
+  margin-left: auto;
+  margin-right: auto;
+  height: 57px;
+  height: 3.5625rem;
+  line-height: 55px;
+  line-height: 3.4375rem;
+  border: 2px solid #97ce1c;
+  border: 0.125rem solid #97ce1c;
+  border-radius: 2.25rem;
+  text-align: center;
+  display: block;
+}
+
+.p-information__notes {
+  margin-top: 76px;
+  margin-top: 4.75rem;
+  font-size: 10px;
+  font-size: 0.625rem;
+  line-height: 1.8;
+  letter-spacing: -0.02em;
+  padding-left: 10px;
+  padding-left: 0.625rem;
+  padding-right: 10px;
+  padding-right: 0.625rem;
+}
+
 .p-modal {
   position: fixed;
   z-index: 10000; /*サイトによってここの数値は調整 */
@@ -598,6 +689,11 @@ select::-ms-expand {
   width: 100%;
 }
 
+.p-product__inner {
+  padding-top: 41px;
+  padding-top: 2.5625rem;
+}
+
 .p-product__unisex {
   margin-top: 30px;
   margin-top: 1.875rem;
@@ -633,11 +729,16 @@ select::-ms-expand {
   margin-top: 10px;
   margin-top: 0.625rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9.9375rem, 1fr));
   gap: 20px 25px;
   gap: 1.25rem 1.5625rem;
 }
 
+@media screen and (max-width: 370px) {
+  .p-product__lists {
+    gap: 1.25rem 1.25rem;
+  }
+}
 .p-product__info {
   text-align: center;
 }
@@ -678,5 +779,7 @@ select::-ms-expand {
   margin-top: 0.5rem;
   text-align: center;
   text-transform: uppercase;
+  margin-left: auto;
+  margin-right: auto;
 }
 /*# sourceMappingURL=styles.css.map */

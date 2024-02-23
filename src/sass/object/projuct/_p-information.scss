@@ -1,0 +1,79 @@
+@use "global" as *;
+
+.p-information {
+}
+
+.p-information__inner {
+    padding-bottom: rem(30);
+    padding-top: rem(57);
+}
+
+.p-information__logo {
+    padding: 0 rem(12);
+}
+
+.p-information__contents {
+    font-family: $jp-font;
+}
+
+.p-information__images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(32);
+    padding: 0 rem(26);
+    margin-top: rem(56);
+}
+
+.p-information__qr {
+    padding: 0 rem(26);
+    margin-top: rem(56);
+}
+.p-information__image {
+}
+
+.p-information__image {
+}
+
+.p-information__title {
+    margin-top: rem(32);
+    font-size: rem(14);
+    font-weight: 500;
+    line-height: calc(29 / 14);
+    text-align: center;
+}
+
+.p-information__text {
+    margin-top: rem(22);
+    font-size: rem(11);
+    font-weight: 500;
+    line-height: calc(24 / 11);
+    text-align: center;
+}
+
+.p-information__text p {
+    margin-top: calc(#{rem(11)} * (24 / 11));
+}
+
+.p-information__btn {
+    margin-top: rem(57);
+    color: #97ce1c;
+    width: rem(300);
+    margin-left: auto;
+    margin-right: auto;
+    height: rem(57);
+    line-height: rem(55);
+    border: rem(2) solid #97ce1c;
+    border-radius: rem(36);
+    text-align: center;
+    display: block;
+}
+
+.p-information__notes {
+    margin-top: rem(76);
+    font-size: rem(10);
+
+    line-height: calc(18 / 10);
+    letter-spacing: -0.02em;
+    padding-left: rem(10);
+    padding-right: rem(10);
+}
