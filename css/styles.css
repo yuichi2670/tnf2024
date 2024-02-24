@@ -243,6 +243,14 @@ select::-ms-expand {
   font-weight: 700;
 }
 
+body.js-color-about {
+  background-color: #FCFCFA;
+}
+
+body.js-color-about .p-about {
+  background-color: #FCFCFA;
+}
+
 body.js-color-information {
   background-color: #F8F8F5;
 }
@@ -260,6 +268,24 @@ body.js-color-product {
   padding-bottom: 162px;
   padding-bottom: 10.125rem;
 }
+@media screen and (min-width: 768px) {
+  .p-about {
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 
 .p-about__title {
   font-size: 17px;
@@ -269,6 +295,12 @@ body.js-color-product {
   line-height: 2.1176470588;
   text-align: center;
   color: #97CE1C;
+}
+@media screen and (min-width: 768px) {
+  .p-about__title {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
 }
 
 .p-about__sub {
@@ -280,6 +312,11 @@ body.js-color-product {
   text-align: center;
   font-size: 17px;
   font-size: 1.0625rem;
+}
+@media screen and (min-width: 768px) {
+  .p-about__sub {
+    font-size: 1.6875rem;
+  }
 }
 
 .p-about__text {
@@ -293,6 +330,14 @@ body.js-color-product {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+@media screen and (min-width: 768px) {
+  .p-about__text {
+    width: 100%;
+    max-width: 37.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8888888889;
+  }
 }
 
 .p-archive {
@@ -522,6 +567,13 @@ body.js-color-product {
 
 .p-header__logo {
   display: block;
+}
+@media screen and (min-width: 768px) {
+  .p-header__logo {
+    max-width: 39.25rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .p-information__inner {
@@ -1014,6 +1066,13 @@ body.js-color-product {
   pointer-events: none;
 }
 
+@media screen and (min-width: 768px) {
+  .p-photos__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .p-photos__imageForce {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1024,6 +1083,11 @@ body.js-color-product {
 
 .p-photos__small img {
   aspect-ratio: 187/280;
+}
+@media screen and (min-width: 768px) {
+  .p-photos__small img {
+    aspect-ratio: 320/400;
+  }
 }
 
 .p-product__inner {

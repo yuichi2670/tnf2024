@@ -80,11 +80,14 @@
 }
 
 .p-photos__images {
-
+    @include mq(md) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .p-photos__imageBox {
-
+    
 }
 
 .p-photos__large {
@@ -104,4 +107,8 @@
 
 .p-photos__small img {
     aspect-ratio: 187/280;
+
+    @include mq(md) {
+        aspect-ratio: 320/400;
+    }
 }

@@ -6,6 +6,14 @@
     position: relative;
     z-index: 2;
     padding-bottom: rem(162);
+
+    @include mq(md) {
+        height: calc(var(--vh, 1vh) * 100);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .p-about__title {
@@ -15,6 +23,11 @@
     line-height: calc(36/17);
     text-align: center;
     color: #97CE1C;
+
+    @include mq(md) {
+        font-size: rem(24);
+        line-height: calc(36/24);
+    }
 }
 
 .p-about__sub {
@@ -24,6 +37,10 @@
     line-height: 2;
     text-align: center;
     font-size: rem(17);
+
+    @include mq(md) {
+        font-size: rem(27);
+    }
 }
 
 .p-about__text {
@@ -35,4 +52,11 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+
+    @include mq(md) {
+        width: 100%;
+        max-width: rem(600);
+        font-size: rem(18);
+        line-height: calc(34/18);
+    }
 }
