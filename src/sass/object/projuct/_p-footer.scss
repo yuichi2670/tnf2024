@@ -2,6 +2,10 @@
 
 .p-footer {
     margin-top: rem(41);
+
+    @include mq(md) {
+        margin-top: rem(63);
+    }
 }
 
 .p-footer__staff {
@@ -9,6 +13,11 @@
     text-align: center;
     font-size: rem(10);
     line-height: calc(16/10);
+
+    @include mq(md) {
+        font-size: rem(11);
+
+    }
 }
 
 .p-footer__logo {
@@ -16,6 +25,10 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: rem(46);
+
+    @include mq(md) {
+        margin-top: rem(50);
+    }
 }
 
 .p-footer__copy {
@@ -25,4 +38,9 @@
     font-size: rem(10);
     font-family: $en-font-second;
     margin-bottom: rem(17);
+
+    @include mq(md) {
+        font-size: rem(12);
+        margin-bottom: rem(60);
+    }
 }

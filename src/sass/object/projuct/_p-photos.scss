@@ -6,15 +6,22 @@
     z-index: 2;
 }
 
-.p-photos__container {
+.p-photos__block {
     // position: sticky;
     // top: 0;
     // left: 0;
 
     @include mq(md) {
-        
+        height: calc(var(--vh, 1vh) * 100);
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
     }
-    
+}
+
+.p-photos__block.is-scroll-fixed {
+    @include mq(md) {
+        overflow-y: hidden;
+    }
 }
 
 .p-photos__info {
@@ -37,19 +44,24 @@
     padding-left: rem(16);
     opacity: 0;
 
+    @include mq(md) {
+        height: calc(var(--vh, 1vh) * 100);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    }
 }
 
 .p-photos__number {
     font-size: rem(11);
-    letter-spacing: -.02em;
-    line-height: calc(16/11);
+    letter-spacing: -0.02em;
+    line-height: calc(16 / 11);
     text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.2);
 }
 
 .p-photos__name {
     font-size: rem(35);
     font-weight: 400;
-    letter-spacing: -.02em;
+    letter-spacing: -0.02em;
     line-height: 2;
     text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.2);
 }
@@ -61,13 +73,13 @@
 .p-photos__text p {
     text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.2);
     font-size: rem(11);
-    letter-spacing: -.02em;
-    line-height: calc(16/11);
+    letter-spacing: -0.02em;
+    line-height: calc(16 / 11);
 }
 
 .p-photos__btn {
     font-size: rem(15);
-    letter-spacing: -.02em;
+    letter-spacing: -0.02em;
     width: rem(57);
     height: rem(24);
     line-height: rem(26);
@@ -82,7 +94,6 @@
 .p-photos__block {
     @include mq(md) {
         // height: inherit;
-        
     }
 }
 

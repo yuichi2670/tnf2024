@@ -6,10 +6,21 @@
 .p-information__inner {
     padding-bottom: rem(30);
     padding-top: rem(57);
+
+    @include mq(md) {
+        padding-top: rem(114);
+    }
 }
 
 .p-information__logo {
     padding: 0 rem(12);
+
+    @include mq(md) {
+        padding: 0;
+        max-width: rem(540);
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .p-information__contents {
@@ -27,6 +38,12 @@
 .p-information__qr {
     padding: 0 rem(26);
     margin-top: rem(56);
+    max-width: rem(450);
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq(md) {
+    }
 }
 .p-information__image {
 }
@@ -40,6 +57,11 @@
     font-weight: 500;
     line-height: calc(29 / 14);
     text-align: center;
+
+    @include mq(md) {
+        font-size: rem(18);
+        line-height: calc(38/18)
+    }
 }
 
 .p-information__text {
@@ -48,10 +70,21 @@
     font-weight: 500;
     line-height: calc(24 / 11);
     text-align: center;
+
+    @include mq(md) {
+        font-size: rem(13);
+        line-height: 2;
+        margin-top: rem(17);
+    }
 }
 
 .p-information__text p {
     margin-top: calc(#{rem(11)} * (24 / 11));
+
+    @include mq(md) {
+        margin-top: calc(#{rem(13)} * 2);
+
+    }
 }
 
 .p-information__btn {
@@ -66,14 +99,30 @@
     border-radius: rem(36);
     text-align: center;
     display: block;
+
+    @include mq(md) {
+        margin-top: rem(46);
+        width: rem(707);
+        transition: all .3s;
+    }
+}
+
+.p-information__btn:hover {
+    color: #fff;
+    background-color: #97ce1c;
 }
 
 .p-information__notes {
     margin-top: rem(76);
     font-size: rem(10);
-
     line-height: calc(18 / 10);
     letter-spacing: -0.02em;
     padding-left: rem(10);
     padding-right: rem(10);
+
+    @include mq(md) {
+        margin-top: rem(38);
+        font-size: rem(11);
+        text-align: center;
+    }
 }

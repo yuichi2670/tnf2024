@@ -4,7 +4,7 @@
 // インナー幅設定
 ////////////////////
 // コンテンツのインナー幅（最も共通の幅が多い部分）
-$inner: 1100px;
+$inner: 1167px;
 // ※キャンパス幅ではなくインナーの幅を指す
 
 // 余白
@@ -111,5 +111,20 @@ $mediaquerys: (
 .u-mobile {
   @include mq("md") {
     display: none;
+  }
+}
+
+.br-sp {
+  display: block;
+
+  @include mq(md) {
+    display: none;
+  }
+}
+
+.br-pc {
+  display: none;
+  @include mq(md) {
+    display: block;
   }
 }

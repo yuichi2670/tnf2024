@@ -195,7 +195,7 @@ unisexTl.fromTo('.js-product__unisex li', {
   y: 0,
   autoAlpha: 1,
   stagger: {
-    each: 0.2
+    each: 0.15
   }
 });
 
@@ -215,7 +215,7 @@ kidsTl.fromTo('.js-product__kids li', {
   y: 0,
   autoAlpha: 1,
   stagger: {
-    each: 0.2
+    each: 0.15
   }
 });
 
@@ -251,7 +251,16 @@ fades.forEach((fade) => {
 });
 
 
-
+var lookItems = document.querySelector('.p-photos__block');
+lookItems.addEventListener('scroll', function() {
+  var scrollableHeight = lookItems.scrollHeight - lookItems.clientHeight;
+  var currentScroll = lookItems.scrollTop;
+  if (currentScroll > scrollableHeight + 10) {
+    lookItems.classList.add('is-scroll-fixed');
+  } else {
+    lookItems.classList.remove('is-scroll-fixed');
+  }
+});
 
 /**
 |--------------------------------------------------

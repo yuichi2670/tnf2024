@@ -3,6 +3,10 @@
 
 .p-archive {
     margin-top: rem(100);
+
+    @include mq(md) {
+        margin-top: rem(340);
+    }
     
 }
 
@@ -15,7 +19,14 @@
     
     @include mq(md) {
         grid-template-columns: repeat(3, 1fr);
-        gap: rem(12);
+        gap: rem(13);
+        grid-auto-flow: row;
+    }
+}
+
+.p-archive__item {
+    @include mq(md) {
+        transition: all .3s;
     }
 }
 
@@ -29,4 +40,11 @@
 
 .p-archive__image img {
     aspect-ratio: 380/475;
+}
+
+/*======================================================
+    マウスオーバー
+======================================================*/
+.p-archive__item:hover {
+    opacity: .8!important;
 }
