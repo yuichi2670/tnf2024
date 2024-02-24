@@ -5,6 +5,8 @@ body {
   color: #000;
   -webkit-animation: fadeIn 1s forwards;
           animation: fadeIn 1s forwards;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 body.is-fade-stop {
@@ -18,6 +20,7 @@ body.is-fade-stop {
   }
   100% {
     opacity: 1;
+    margin-top: 0; /* 元の位置に戻す */
   }
 }
 
@@ -27,6 +30,7 @@ body.is-fade-stop {
   }
   100% {
     opacity: 1;
+    margin-top: 0; /* 元の位置に戻す */
   }
 }
 .u-desktop {
@@ -113,15 +117,15 @@ dd {
 }
 
 /* Set core root defaults */
-html {
-  scroll-behavior: smooth;
-}
-
 /* Set core body defaults */
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+}
+
+picture {
+  display: block;
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
@@ -213,11 +217,82 @@ select::-ms-expand {
   }
 }
 
+.l-space {
+  height: 100vh;
+}
+
+.c-btn {
+  color: #97CE1C;
+  border: 1px solid #97CE1C;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .c-btn:hover {
+    background-color: #97CE1C;
+    color: #fff;
+  }
+}
+
 .c-section-title {
   font-size: 28px;
   font-size: 1.75rem;
   line-height: 2.0357142857;
   font-weight: 700;
+}
+
+body.js-color-information {
+  background-color: #F8F8F5;
+}
+
+body.js-color-product {
+  background-color: #fff;
+}
+
+.p-about {
+  padding-top: 88px;
+  padding-top: 5.5rem;
+  background-color: #fff;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 162px;
+  padding-bottom: 10.125rem;
+}
+
+.p-about__title {
+  font-size: 17px;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 2.1176470588;
+  text-align: center;
+  color: #97CE1C;
+}
+
+.p-about__sub {
+  margin-top: 70px;
+  margin-top: 4.375rem;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 500;
+  line-height: 2;
+  text-align: center;
+  font-size: 17px;
+  font-size: 1.0625rem;
+}
+
+.p-about__text {
+  margin-top: 30px;
+  margin-top: 1.875rem;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 500;
+  line-height: 2.0769230769;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .p-archive {
@@ -247,6 +322,111 @@ select::-ms-expand {
 
 .p-archive__image img {
   aspect-ratio: 380/475;
+}
+
+.p-event {
+  margin-top: 40px;
+  margin-top: 2.5rem;
+}
+
+.p-event__title {
+  text-align: center;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+
+.p-event__image {
+  margin-top: 22px;
+  margin-top: 1.375rem;
+}
+
+.p-event__image img {
+  aspect-ratio: 375/250;
+}
+
+.p-event__inner {
+  padding: 50px 20px;
+  padding: 3.125rem 1.25rem;
+  max-width: 500px;
+  max-width: 31.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-event__info {
+  font-weight: 500;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+}
+
+.p-event__texts {
+  margin-top: 35px;
+  margin-top: 2.1875rem;
+}
+
+.p-event__texts p {
+  font-size: 13px;
+  font-size: 0.8125rem;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  line-height: 2;
+}
+
+.p-event__texts p:not(:first-child) {
+  margin-top: 26px;
+  margin-top: 1.625rem;
+}
+
+.p-event__cards {
+  margin-top: 67px;
+  margin-top: 4.1875rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  gap: 2.25rem;
+}
+
+.p-event__card {
+  position: relative;
+}
+
+.p-event__card::after {
+  position: absolute;
+  content: "";
+  width: 20%;
+  height: 20%;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -5%;
+  left: -5%;
+}
+
+.p-event__card:nth-child(1)::after {
+  background-image: url(../images/event_icon_front.svg);
+}
+
+.p-event__card:nth-child(2)::after {
+  background-image: url(../images/event_icon_back.svg);
+}
+
+.p-event__btn {
+  margin-top: 61px;
+  margin-top: 3.8125rem;
+  width: 104px;
+  width: 6.5rem;
+  height: 30px;
+  height: 1.875rem;
+  line-height: 32px;
+  line-height: 2rem;
+  text-align: center;
+  border-radius: 1.875rem;
+  font-size: 14px;
+  font-size: 0.875rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .p-footer {
@@ -281,6 +461,67 @@ select::-ms-expand {
   font-family: "aktiv-grotesk", sans-serif;
   margin-bottom: 17px;
   margin-bottom: 1.0625rem;
+}
+
+.p-header {
+  height: 100vh;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.p-header__inner {
+  height: inherit;
+}
+
+.p-header__container {
+  height: inherit;
+  position: relative;
+}
+
+.p-header__slides {
+  height: inherit;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.p-header__wrapper {
+  height: inherit;
+}
+
+.p-header__image {
+  height: inherit;
+  opacity: 0;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+.p-header__image img {
+  height: 100% !important;
+  aspect-ratio: 375/555;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.p-header__title {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 88%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.p-header__logo {
+  display: block;
 }
 
 .p-information__inner {
@@ -689,10 +930,9 @@ select::-ms-expand {
   width: 100%;
 }
 
-.p-photos__container {
-  position: sticky;
-  top: 0;
-  left: 0;
+.p-photos {
+  position: relative;
+  z-index: 2;
 }
 
 .p-photos__info {
@@ -715,6 +955,7 @@ select::-ms-expand {
   padding-top: 1.25rem;
   padding-left: 16px;
   padding-left: 1rem;
+  opacity: 0;
 }
 
 .p-photos__number {
@@ -835,6 +1076,10 @@ select::-ms-expand {
     gap: 1.25rem 1.25rem;
   }
 }
+.p-product__list {
+  opacity: 0;
+}
+
 .p-product__info {
   text-align: center;
 }
@@ -848,12 +1093,15 @@ select::-ms-expand {
 }
 
 .p-product__name {
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.25;
 }
 
 .p-product__name span {
   display: block;
+  margin-top: 2px;
+  margin-top: 0.125rem;
+  letter-spacing: -0.03em;
   font-size: 10px;
   font-size: 0.625rem;
   font-family: "Zen Kaku Gothic New", sans-serif;
@@ -864,8 +1112,8 @@ select::-ms-expand {
   width: 10rem;
   height: 30px;
   height: 1.875rem;
-  line-height: 30px;
-  line-height: 1.875rem;
+  line-height: 32px;
+  line-height: 2rem;
   color: #97CE1C;
   border: 1px solid #97CE1C;
   border-radius: 1.25rem;

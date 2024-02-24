@@ -1,0 +1,98 @@
+@use "global" as *;
+
+.p-event {
+    margin-top: rem(40);
+}
+
+.p-event__title {
+    text-align: center;
+    font-size: rem(20);
+    font-weight: 500;
+    font-family: $jp-font;
+}
+
+.p-event__image {
+    margin-top: rem(22);
+}
+
+.p-event__image img {
+    aspect-ratio: 375/250;
+}
+
+.p-event__inner {
+    padding: rem(50) rem(20);
+    max-width: rem(500);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.p-event__info {
+    font-weight: 500;
+    font-family: $jp-font;
+    font-size: rem(16);
+}
+
+.p-event__texts {
+    margin-top: rem(35);
+}
+
+.p-event__texts p {
+    font-size: rem(13);
+    font-family: $jp-font;
+    line-height: 2;
+}
+
+.p-event__texts p:not(:first-child) {
+    margin-top: calc(#{rem(13)} * 2);
+}
+
+.p-event__cards {
+    margin-top: rem(67);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(36);
+}
+
+.p-event__card {
+    position: relative;
+}
+
+.p-event__card::after {
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 20%;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: -5%;
+    left: -5%;
+    
+}
+
+.p-event__card:nth-child(1)::after {
+    background-image: url(../images/event_icon_front.svg);
+}
+.p-event__card:nth-child(2)::after {
+    background-image: url(../images/event_icon_back.svg);
+}
+
+.p-event__cardImage {
+
+}
+
+.p-event__tag {
+
+}
+
+.p-event__btn {
+    margin-top: rem(61);
+    width: rem(104);
+    height: rem(30);
+    line-height: rem(32);
+    text-align: center;
+    border-radius: rem(30);
+    font-size: rem(14);
+    margin-left: auto;
+    margin-right: auto;
+}

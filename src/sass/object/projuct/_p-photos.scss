@@ -1,13 +1,16 @@
 @use "global" as *;
 
 .p-photos {
-
+    // margin-top: rem(162);
+    position: relative;
+    z-index: 2;
 }
 
 .p-photos__container {
-    position: sticky;
-    top: 0;
-    left: 0;
+    // position: sticky;
+    // top: 0;
+    // left: 0;
+    
 }
 
 .p-photos__info {
@@ -28,6 +31,7 @@
     height: 100%;
     padding-top: rem(20);
     padding-left: rem(16);
+    opacity: 0;
 
 }
 

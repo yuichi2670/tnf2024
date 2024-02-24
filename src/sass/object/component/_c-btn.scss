@@ -1,0 +1,15 @@
+@use "global" as *;
+
+.c-btn {
+    color: #97CE1C;
+    border: 1px solid #97CE1C;
+    transition: all .3s;
+    display: block;
+}
+
+.c-btn:hover {
+    @include mq(md) {
+        background-color: #97CE1C;
+        color: #fff;
+    }
+}

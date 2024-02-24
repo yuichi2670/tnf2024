@@ -50,7 +50,7 @@
 }
 
 .p-product__list {
-
+    opacity: 0;
 }
 
 .p-product__image {
@@ -70,12 +70,14 @@
 }
 
 .p-product__name {
-    font-weight: 600;
+    font-weight: 400;
     line-height: calc(20/16);
 }
 
 .p-product__name span {
     display: block;
+    margin-top: rem(2);
+    letter-spacing: -.03em;
     font-size: rem(10);
     font-family: $jp-font;
 }
@@ -83,7 +85,7 @@
 .p-product__btn {
     width: rem(160);
     height: rem(30);
-    line-height: rem(30);
+    line-height: rem(32);
     color: #97CE1C;
     border: 1px solid #97CE1C;
     border-radius: rem(20);

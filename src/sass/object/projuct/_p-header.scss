@@ -1,0 +1,66 @@
+@use "global" as *;
+
+.p-header {
+    // height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+
+.p-header.is-fixed {
+    
+}
+
+.p-header__inner {
+    
+    height: inherit;
+}
+
+.p-header__container {
+    height: inherit;
+    position: relative;
+}
+
+.p-header__slides {
+    height: inherit;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.p-header__wrapper {
+    height: inherit;
+}
+
+.p-header__image {
+    height: inherit;
+    opacity:0;
+	transition:all 1s ease-in-out;
+}
+
+.p-header__image img {
+    height: 100%!important;
+    aspect-ratio: 375/555;
+    object-fit: cover;
+}
+
+.p-header__title {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.p-header__logo {
+    display: block;
+}

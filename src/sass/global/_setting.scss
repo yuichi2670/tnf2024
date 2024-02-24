@@ -22,10 +22,15 @@ $en-font-second: "aktiv-grotesk", sans-serif;
 $jp-font: "Zen Kaku Gothic New", sans-serif;
 // ※検証ツールでしっかり反映されているか確認する
 
+html {
+  
+}
+
 body {
   font-family: $en-font;
   color: #000;
   animation: fadeIn 1s forwards;
+  transition: all .3s;
 }
 
 body.is-fade-stop {
@@ -35,11 +40,11 @@ body.is-fade-stop {
 @keyframes fadeIn {
   0% {
     opacity: 0;
-    // transform: scale(1.002);
+    // margin-top: -1px; /* マージンを調整して隙間が発生しないようにする */
   }
   100% {
     opacity: 1;
-    // transform: scale(1);
+    margin-top: 0; /* 元の位置に戻す */
   }
 }
 
