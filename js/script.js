@@ -1,7 +1,57 @@
 
 /**
 |--------------------------------------------------
-|　modalのスライド 
+| 商品詳細項目の切り替え
+|--------------------------------------------------
+*/
+// 各画像グループが画面最上部に来たら一致するIDのものを表示して、各画像グループの最下部が画面上部から消えたら消す
+
+
+const photosDetail = document.getElementById('js-photos__detail');
+const photoItems = document.querySelectorAll('.js-photos__items');
+const photoContainer = document.querySelector('.js-photos__container');
+const photoInfo = document.querySelector('.js-photos__info')
+
+gsap.to(photoInfo, {
+  autoAlpha: 0,
+  duration: .3,
+  scrollTrigger: {
+    trigger: photoContainer,
+    start: 'bottom-=190px top',
+    markers: true,
+    toggleActions: "play reverse play reverse",
+  }
+});
+
+photoItems.forEach(item => {
+  const targetId = item.getAttribute('href');
+  const photosDetail = document.querySelector(targetId);
+  
+  gsap.fromTo(photosDetail, {
+    autoAlpha: 0,
+    visibility: 'hidden'
+  },
+  {
+    autoAlpha: 1,
+    visibility: 'visible',
+    duration: .3,
+    scrollTrigger: {
+      trigger: item,
+      start: 'top top',
+      end: 'bottom top',
+      toggleActions: "play reverse play reverse",
+    }
+  });
+
+  
+});
+
+
+
+
+/**
+|--------------------------------------------------
+| 各modalのスライド 
 |--------------------------------------------------
 */
 const swiper = new Swiper(".swiper2023", {
@@ -46,6 +96,11 @@ const swiper03 = new Swiper(".swiper2021", {
   },
 });
 
+/**
+|--------------------------------------------------
+| 過去記事のポップアップ
+|--------------------------------------------------
+*/
 jQuery(function ($) {
   //ポップアップ2023
   $(function () {
