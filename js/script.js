@@ -250,6 +250,23 @@ fades.forEach((fade) => {
   );
 });
 
+/**
+|--------------------------------------------------
+| archiveのフェードイン
+|--------------------------------------------------
+*/
+var fadeIn = $(".c-fade");
+  $(window).on("scroll", function () {
+    $(fadeIn).each(function () {
+      var offset = $(this).offset().top;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll > offset - windowHeight + 50) {
+        $(this).addClass("c-fade__in");
+      }
+    });
+  });
+
 
 var lookItems = document.querySelector('.p-photos__block');
 lookItems.addEventListener('scroll', function() {
@@ -261,6 +278,8 @@ lookItems.addEventListener('scroll', function() {
     lookItems.classList.remove('is-scroll-fixed');
   }
 });
+
+
 
 /**
 |--------------------------------------------------

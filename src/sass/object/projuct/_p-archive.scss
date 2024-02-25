@@ -34,17 +34,15 @@
     padding: 0;
 }
 
-.p-archive__image {
-
-}
 
 .p-archive__image img {
     aspect-ratio: 380/475;
+    transition: all .3s;
 }
 
 /*======================================================
     マウスオーバー
 ======================================================*/
-.p-archive__item:hover {
-    opacity: .8!important;
+.p-archive__image img:hover {
+   opacity: .8;
 }

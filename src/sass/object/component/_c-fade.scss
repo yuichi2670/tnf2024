@@ -1,0 +1,12 @@
+@use "global" as *;
+
+.c-fade {
+    opacity: 0;
+	transform: translateY(#{rem(40)});
+	transition: opacity 1s, transform 1s;
+}
+
+.c-fade__in {
+    opacity: 1;
+	transform: initial;
+}
