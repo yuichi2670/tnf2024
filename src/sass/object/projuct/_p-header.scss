@@ -1,5 +1,7 @@
 @use "global" as *;
 
+
+
 .p-header {
     // height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
@@ -16,7 +18,6 @@
 }
 
 .p-header__inner {
-    
     height: inherit;
 }
 
@@ -27,24 +28,51 @@
 
 .p-header__slides {
     height: inherit;
-    opacity: 0;
-    visibility: hidden;
+    // opacity: 0;
+    // visibility: hidden;
 }
 
 .p-header__wrapper {
     height: inherit;
 }
 
+.p-header__slide .p-header__image {
+   position: relative;
+}
+.p-header__slide .p-header__image::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(270deg, #000 0, #000 50%, transparent 100%);
+    background-repeat: no-repeat;
+    -webkit-background-size: 200% 100%;
+    background-size: 200% 100%;
+    // -webkit-background-position: 0% 0;
+    background-position: 100% 0;
+    z-index: 10;
+    opacity: 1;
+}
+
+
+
 .p-header__image {
     height: inherit;
-    opacity:0;
-	transition:all 1s ease-in-out;
 }
 
 .p-header__image img {
     height: 100%!important;
     aspect-ratio: 375/555;
     object-fit: cover;
+    position: relative;
+}
+
+.p-header__image img {
+    position: absolute;
+    content: "";
+    
 }
 
 .p-header__title {
@@ -68,5 +96,55 @@
         max-width: rem(628);
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+  
+  .swiper-slide .p-header__image,
+  .swiper-slide .p-header__image img {
+    /*切り替わり中は前のスライドのアニメーションを遅らせる*/
+    transition-delay: .6s;
+  }
+  
+  .swiper-slide .p-header__image::after {
+    transition-delay: .1s;
+  }
+  
+  .swiper-slide .p-header__image {
+    
+    overflow: hidden;
+  }
+  
+  .swiper-slide .p-header__image img {
+    
+  }
+  
+  .swiper-slide-active {
+    /*アクティブなスライドが一番上に来るように*/
+    z-index: 2;
+  }
+  
+  .swiper-slide-active .p-header__image,
+  .swiper-slide-active .p-header__image img {
+    transition-delay: 0s;
+    transition-duration: .6s;
+    transform: translateX(0%);
+  }
+
+  .swiper-slide-active .p-header__image::after {
+    animation: .9s cubic-bezier(0.65, 0.05, 0.36, 1) 0s 1 normal forwards maskFadeOut;
+}
+
+@keyframes maskFadeOut {
+    0% {
+        background-position: 100% 0;
+        opacity: 1;
+        
+    }
+
+    100% {
+        background-position: -200% 0;
+        opacity: 1;
+        
     }
 }

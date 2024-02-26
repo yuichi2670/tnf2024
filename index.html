@@ -44,24 +44,33 @@
                 <div class="p-header__container">
                     <div class="p-header__slides swiper-fv js-header__slides">
                         <div class="swiper-wrapper p-header__wrapper">
-                            <picture class="swiper-slide p-header__image">
-                                <source srcset="./images/main01_pc.jpg" media="(min-width: 768px)" />
-                                <img src="./images/main01_sp.jpg" alt="One Product One Tree">
-                            </picture>
-                            <picture class="swiper-slide p-header__image">
-                                <source srcset="./images/main02_pc.jpg" media="(min-width: 768px)" />
-                                <img src="./images/main02_sp.jpg" alt="One Product One Tree">
-                            </picture>
-                            <picture class="swiper-slide p-header__image">
-                                <source srcset="./images/main03_pc.jpg" media="(min-width: 768px)" />
-                                <img src="./images/main03_sp.jpg" alt="One Product One Tree">
-                            </picture>
-                            <picture class="swiper-slide p-header__image">
-                                <source srcset="./images/main04_pc.jpg" media="(min-width: 768px)" />
-                                <img src="./images/main04_sp.jpg" alt="One Product One Tree">
-                            </picture>
+                            <div class="swiper-slide p-header__slide">
+                                <picture class="p-header__image">
+                                    <source srcset="./images/main01_pc.jpg" media="(min-width: 768px)" />
+                                    <img src="./images/main01_sp.jpg" alt="One Product One Tree">
+                                </picture>
+                            </div>
+                            <div class="swiper-slide p-header__slide">
+                                <picture class="p-header__image">
+                                    <source srcset="./images/main02_pc.jpg" media="(min-width: 768px)" />
+                                    <img src="./images/main02_sp.jpg" alt="One Product One Tree">
+                                </picture>
+                            </div>
+                            <div class="swiper-slide p-header__slide">
+                                <picture class="p-header__image">
+                                    <source srcset="./images/main03_pc.jpg" media="(min-width: 768px)" />
+                                    <img src="./images/main03_sp.jpg" alt="One Product One Tree">
+                                </picture>
+                            </div>
+                            <div class="swiper-slide p-header__slide">
+                                <picture class="p-header__image">
+                                    <source srcset="./images/main04_pc.jpg" media="(min-width: 768px)" />
+                                    <img src="./images/main04_sp.jpg" alt="One Product One Tree">
+                                </picture>
+                            </div>
                         </div>
                     </div>
+                    
                     <h1 class="p-header__title js-header__title">
                         <picture class="p-header__logo">
                             <source srcset="./images/logo_pc.svg" media="(min-width: 768px)">
@@ -80,7 +89,7 @@
             </section>
             <section class="p-photos">
                 <div class="p-photos__container js-photos__container">
-                    <!-- <div class="p-photos__info js-photos__info">
+                     <div class="p-photos__info js-photos__info">
                         <div class="p-photos__details" id="js-photos__detail01">
                             <p class="p-photos__number">NM72302</p>
                             <h2 class="p-photos__name">Hot Shot</h2>
@@ -147,7 +156,7 @@
                             </div>
                             <a href="" class="p-photos__btn" target="_blank">buy</a>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="p-photos__block js-photos__block">
                         <a href="#js-photos__detail01" class="p-photos__items js-photos__items">
                             <div class="p-photos__images">
@@ -1020,9 +1029,9 @@
         </footer>
         <!-- JavaScript -->
         <!-- gsap(フェードなどのアニメーション）のJavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script defer src="./js/script.js"></script>
     </body>

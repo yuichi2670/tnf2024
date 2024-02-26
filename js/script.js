@@ -3,16 +3,10 @@
 | fv オープニング
 |--------------------------------------------------
 */
-const fvSlides = document.querySelector(".js-header__slides");
 const fvTitle = document.querySelector(".js-header__title");
 
 gsap
   .timeline()
-  .to(fvSlides, {
-    autoAlpha: 1,
-    visibility: "visible",
-    duration: 0.3,
-  })
   .to(
     fvTitle,
     {
@@ -20,7 +14,7 @@ gsap
       visibility: "visible",
       duration: 0.3,
     },
-    "+=.8"
+    "+=1"
   );
 
 /**
@@ -122,15 +116,33 @@ photoItems.forEach((item) => {
 | fvスライド
 |--------------------------------------------------
 */
+// const swiperFv = new Swiper(".swiper-fv", {
+//   loop: true,
+//   speed: 2000, //追加（スライドスピード）
+//   effect: "fade",
+//   allowTouchMove: false, //追加（フェードエフェクトを適用する）
+//   autoplay: {
+//     delay: 2000,
+//   },
+//   direction: 'horizontal'
+// });
+
+
+
 const swiperFv = new Swiper(".swiper-fv", {
-  loop: true,
-  speed: 2000, //追加（スライドスピード）
+  //fadeを有効にすることでスライダーが全て重なり合った状態になる
   effect: "fade",
-  allowTouchMove: false, //追加（フェードエフェクトを適用する）
+  loop: true,
+  //fadeの切り替えは必要ないのでspeedは0s
+  speed: 0,
   autoplay: {
-    delay: 2000,
+    delay: 6000,
+    duration: 1,
+    //ドラッグで切り替えた後に自動再生が止まらないようにするにはfalse
+    disableOnInteraction: false
   },
-  direction: 'horizontal'
+  //ドラッグで切り替えたくない場合はfalse
+  allowTouchMove: false
 });
 
 /**
