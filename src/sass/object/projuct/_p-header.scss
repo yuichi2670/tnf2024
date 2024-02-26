@@ -6,15 +6,16 @@
     // height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
-    position: sticky;
+    // position: sticky;
     top: 0;
     left: 0;
     width: 100%;
+    z-index: -1;
 
 }
 
-.p-header.is-fixed {
-    display: none;
+.p-header.is-hidden {
+
 }
 
 .p-header__inner {
@@ -46,7 +47,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-image: linear-gradient(270deg, #000 0, #000 50%, transparent 100%);
+    background-image: linear-gradient(270deg, #fff 0, #fff 50%, transparent 100%);
     background-repeat: no-repeat;
     -webkit-background-size: 200% 100%;
     background-size: 200% 100%;

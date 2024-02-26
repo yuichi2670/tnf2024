@@ -6,6 +6,9 @@
 
     @include mq(md) {
         margin-top: rem(340);
+        position: relative;
+        z-index: 2;
+        background-color: #fff;
     }
     
 }
