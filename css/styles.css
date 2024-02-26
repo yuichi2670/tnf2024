@@ -1178,16 +1178,12 @@ body.js-color-product {
   z-index: 2;
 }
 
-@media screen and (min-width: 768px) {
-  .p-photos__container {
-    height: 100%;
-  }
-}
-
 .p-photos__info {
   color: #fff;
-  position: sticky;
+  position: fixed;
   content: "";
+  width: 100%;
+  height: auto;
   top: 0;
   left: 0;
   z-index: 10;
@@ -1284,7 +1280,7 @@ body.js-color-product {
 }
 @media screen and (min-width: 768px) {
   .p-photos__items {
-    height: 100%;
+    height: inherit;
     display: block;
     scroll-snap-align: center;
     scroll-snap-stop: always;

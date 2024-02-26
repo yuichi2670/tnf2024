@@ -41,7 +41,6 @@ ScrollTrigger.create ({
 
 const photosDetail = document.getElementById("js-photos__detail");
 const photoItems = document.querySelectorAll(".js-photos__items");
-const photoContainer = document.querySelector(".js-photos__container");
 const photoInfo = document.querySelector(".js-photos__info");
 const photoBlocks = document.querySelector(".js-photos__block");
 const photoChild = document.querySelectorAll(".js-photos__child");
@@ -54,7 +53,7 @@ photoItems.forEach((item) => {
     autoAlpha: 0,
     duration: 0.3,
     scrollTrigger: {
-      trigger: photoContainer,
+      trigger: photoBlocks,
       start: "bottom-=190px top",
       // markers: true,
       toggleActions: "play reverse play reverse",
@@ -366,6 +365,7 @@ jQuery(function ($) {
       $("body").removeClass("is-fade-stop");
     });
   });
+  
 });
 
 const setFillHeight = () => {
