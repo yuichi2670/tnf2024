@@ -8,7 +8,7 @@
 
 .p-photos__info {
     color: #fff;
-    position: fixed;
+    position: sticky;
     content: "";
     width: 100%;
     height: auto;
@@ -73,34 +73,19 @@
 }
 
 .p-photos__block.is-snap-off {
-    @include mq(md) {
-        overflow-y: hidden;
-    }
+    
 }
 
 .p-photos__block {
+    
     @include mq(md) {
-        height: calc(var(--vh, 1vh) * 100);
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-        margin-top: 0.1px;
+//         line-height: 100vh;
+//   line-height: 100dvh;
+//   min-height: 100vh;
+//   min-height: 100dvh;
     }
 }
 
-// .p-photos__block {
-
-//     @include mq(md) {
-//         height: calc(var(--vh, 1vh) * 100);
-//     }
-// }
-
-// .p-photos__block.is-snap {
-
-//     @include mq(md) {
-//         overflow-y: auto;
-//         scroll-snap-type: y mandatory;
-//     }
-// }
 
 .p-photos__block.is-scroll-fixed {
     @include mq(md) {
@@ -112,10 +97,7 @@
     pointer-events: none;
 
     @include mq(md) {
-        height: inherit;
-        display: block;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
+        height: 100vh;
     }
 }
 

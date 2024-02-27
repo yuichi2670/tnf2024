@@ -1180,7 +1180,7 @@ body.js-color-product {
 
 .p-photos__info {
   color: #fff;
-  position: fixed;
+  position: sticky;
   content: "";
   width: 100%;
   height: auto;
@@ -1254,22 +1254,6 @@ body.js-color-product {
 }
 
 @media screen and (min-width: 768px) {
-  .p-photos__block.is-snap-off {
-    overflow-y: hidden;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .p-photos__block {
-    height: 100vh;
-    overflow-y: auto;
-    -ms-scroll-snap-type: y mandatory;
-        scroll-snap-type: y mandatory;
-    margin-top: 0.1px;
-  }
-}
-
-@media screen and (min-width: 768px) {
   .p-photos__block.is-scroll-fixed {
     overflow-y: hidden;
   }
@@ -1280,10 +1264,7 @@ body.js-color-product {
 }
 @media screen and (min-width: 768px) {
   .p-photos__items {
-    height: inherit;
-    display: block;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
+    height: 100vh;
   }
 }
 
