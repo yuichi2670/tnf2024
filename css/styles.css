@@ -5,6 +5,7 @@ body {
   color: #000;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  -webkit-font-smoothing: antialiased;
 }
 
 body.is-fade-stop {
@@ -687,11 +688,6 @@ body.js-color-product {
   position: relative;
 }
 
-.p-header__image img {
-  position: absolute;
-  content: "";
-}
-
 .p-header__title {
   position: absolute;
   content: "";
@@ -895,9 +891,11 @@ body.js-color-product {
   }
 }
 
-.p-information__btn:hover {
-  color: #fff;
-  background-color: #97ce1c;
+@media screen and (min-width: 768px) {
+  .p-information__btn:hover {
+    color: #fff;
+    background-color: #97ce1c;
+  }
 }
 
 .p-information__notes {
@@ -1146,9 +1144,10 @@ body.js-color-product {
 }
 
 .p-modal__comments {
-  padding: 32px 19px 46px;
-  padding: 2rem 1.1875rem 2.875rem;
+  padding: 32px 0px 46px;
+  padding: 2rem 0rem 2.875rem;
   font-family: "Zen Kaku Gothic New", sans-serif;
+  color: #000343;
 }
 @media screen and (min-width: 768px) {
   .p-modal__comments {
@@ -1171,12 +1170,17 @@ body.js-color-product {
 }
 
 .p-modal__text {
-  font-weight: bold;
+  font-weight: 600;
   line-height: 2;
+  padding-left: 24px;
+  padding-left: 1.5rem;
+  padding-right: 5px;
+  padding-right: 0.3125rem;
 }
 @media screen and (min-width: 768px) {
   .p-modal__text {
     margin-top: -0.625rem;
+    padding: 0;
   }
 }
 
@@ -1187,6 +1191,15 @@ body.js-color-product {
   font-size: 0.8125rem;
   line-height: 2;
   font-weight: 400;
+  padding-left: 24px;
+  padding-left: 1.5rem;
+  padding-right: 31px;
+  padding-right: 1.9375rem;
+}
+@media screen and (min-width: 768px) {
+  .p-modal__text-sub {
+    padding: 0;
+  }
 }
 
 .p-modal__text-sub p:not(:first-child) {
@@ -1527,9 +1540,10 @@ body.js-color-product {
   }
 }
 
-.p-product__list:nth-child(n+6) {
-  margin-top: 35px;
-  margin-top: 2.1875rem;
+@media screen and (min-width: 768px) {
+  .p-product__list:nth-child(n+6) {
+    margin-top: 2.1875rem;
+  }
 }
 
 .p-product__info {

@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
           trigger: item,
           start: "top top",
-          end: "bottom -99.9%",
+          end: "bottom -99%",
           // markers: true,
           toggleActions: "play reverse play reverse",
         },
@@ -370,7 +370,7 @@ $(window).on("scroll", function () {
     var offset = $(this).offset().top;
     var scroll = $(window).scrollTop();
     var windowHeight = $(window).height();
-    if (scroll > offset - windowHeight) {
+    if (scroll > offset - windowHeight + 100) {
       $(this).addClass("c-fade__in");
     }
   });
@@ -500,7 +500,7 @@ if (gsap && ScrollTrigger) {
   };
 
   applySnapping();
-  window.addEventListener('resize', gsap.utils.debounce(applySnapping, 250));
+  // window.addEventListener('resize', gsap.utils.debounce(applySnapping, 250));
 }
 
 

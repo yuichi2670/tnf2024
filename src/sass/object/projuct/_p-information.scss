@@ -108,8 +108,10 @@
 }
 
 .p-information__btn:hover {
-    color: #fff;
-    background-color: #97ce1c;
+    @include mq(md) {
+        color: #fff;
+        background-color: #97ce1c;
+    }
 }
 
 .p-information__notes {
