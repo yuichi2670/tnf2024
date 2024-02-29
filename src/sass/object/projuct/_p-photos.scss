@@ -79,10 +79,10 @@
 .p-photos__block {
     
     @include mq(md) {
-//         line-height: 100vh;
-//   line-height: 100dvh;
-//   min-height: 100vh;
-//   min-height: 100dvh;
+        line-height: 100vh;
+  line-height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
     }
 }
 

@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleActions: "play reverse play reverse",
       },
     });
+    if (window.innerWidth >= 768) {
     gsap.fromTo(
       photosDetail,
       {
@@ -73,11 +74,34 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
           trigger: item,
           start: "top top",
-          // end: "bottom top",
+          end: "bottom -99.9%",
+          // markers: true,
           toggleActions: "play reverse play reverse",
         },
       }
     );
+    } else {
+      gsap.fromTo(
+        photosDetail,
+        {
+          autoAlpha: 0,
+          visibility: "hidden",
+        },
+        {
+          autoAlpha: 1,
+          visibility: "visible",
+          duration: 0.3,
+          pin: true,
+          scrollTrigger: {
+            trigger: item,
+            start: "top top",
+            // end: "top top",
+            // markers: true,
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    }
   });
 });
 
@@ -238,28 +262,55 @@ fades.forEach((fade) => {
 |--------------------------------------------------
 */
 
-const sectionColors = document.querySelectorAll(".js-color-change");
-sectionColors.forEach((sectionColor) => {
-  const sectionColorId = sectionColor.id;
-  // アニメーション
-  gsap.to("body", {
-    delay: 0.1,
-    duration: 0.1,
-    ease: "Power1.easeInOut", // イージング関数を追加
-    scrollTrigger: {
-      trigger: sectionColor,
-      start: "top bottom",
-      toggleActions: "play reverse play reverse",
-      // markers: true,
-      toggleClass: {
-        targets: [
-          "body",
-          // 追加のクラスやセレクタをここに追加
-        ],
-        className: sectionColorId,
-      },
-    },
-  });
+// const sectionColors = document.querySelectorAll(".js-color-change");
+// sectionColors.forEach((sectionColor) => {
+//   const sectionColorId = sectionColor.id;
+//   // アニメーション
+//   gsap.to("body", {
+//     delay: 0.1,
+//     duration: 0.1,
+//     ease: "Power1.easeInOut", // イージング関数を追加
+//     scrollTrigger: {
+//       trigger: sectionColor,
+//       start: "top bottom",
+//       toggleActions: "play reverse play reverse",
+//       markers: true,
+//       toggleClass: {
+//         targets: [
+//           "body",
+//           // 追加のクラスやセレクタをここに追加
+//         ],
+//         className: sectionColorId,
+//       },
+//     },
+//   });
+// });
+
+document.addEventListener('scroll', function() {
+  var pInfoElement = document.getElementById('js-color-information'); // p-information要素を取得
+  var aboutElement = document.getElementById('js-color-about'); // p-information要素を取得
+  var colorProductElement = document.getElementById('js-color-product'); 
+  var pInfoElementBottom = pInfoElement.getBoundingClientRect().top; // 要素の下部のビューポートからの位置
+  var aboutElementBottom = aboutElement.getBoundingClientRect().top; // 要素の下部のビューポートからの位置
+  var colorProductElementTop = colorProductElement.getBoundingClientRect().top; 
+  var viewportHeight = window.innerHeight; // ビューポートの高さ
+
+  if (pInfoElementBottom <= viewportHeight && colorProductElementTop > viewportHeight) {
+    // p-information要素の下部がビューポートの下部に入り、かつ、
+    // js-color-product要素の上部がまだビューポートの下部に達していない場合
+    document.body.style.backgroundColor = '#F8F8F5'; // 背景色を変更
+  } else if (colorProductElementTop <= viewportHeight) {
+    // js-color-product要素の上部がビューポートの下部に入った場合
+    document.body.style.backgroundColor = '#fff'; // 背景色を元に戻す
+  }
+  if (aboutElementBottom <= viewportHeight && colorProductElementTop > viewportHeight) {
+    // p-information要素の下部がビューポートの下部に入り、かつ、
+    // js-color-product要素の上部がまだビューポートの下部に達していない場合
+    document.body.style.backgroundColor = '#F8F8F5'; // 背景色を変更
+  } else if (colorProductElementTop <= viewportHeight) {
+    // js-color-product要素の上部がビューポートの下部に入った場合
+    document.body.style.backgroundColor = '#fff'; // 背景色を元に戻す
+  }
 });
 
 /**
