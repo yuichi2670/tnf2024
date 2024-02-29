@@ -190,13 +190,15 @@
     @include mq(md) {
         width: 49%;
         padding-top: 0;
+        padding-left: rem(53);
+        margin-top: rem(-7);
     }
 }
 
 .p-modal__details:not(:first-child) {
     margin-top: rem(60);
     @include mq(md) {
-        width: 49%;
+        width: 100%;
         padding-top: 0;
     }
 }

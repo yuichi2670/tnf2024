@@ -184,55 +184,58 @@ const swiper03 = new Swiper(".swiper2021", {
 |--------------------------------------------------
 */
 
-// // GSAPのトゥイーンを作成します
-// const unisexTl = gsap.timeline();
-// unisexTl.fromTo(
-//   ".js-product__unisex li",
-//   {
-//     y: 6,
-//     autoAlpha: 0,
-//   },
-//   {
-//     y: 0,
-//     autoAlpha: 1,
-//     stagger: {
-//       each: 0.15,
-//     },
-//   }
-// );
+if (window.innerWidth <= 767) {
+// GSAPのトゥイーンを作成します
+const unisexTl = gsap.timeline();
+unisexTl.fromTo(
+  ".js-product__unisex li",
+  {
+    y: 6,
+    autoAlpha: 0,
+  },
+  {
+    y: 0,
+    autoAlpha: 1,
+    stagger: {
+      each: 0.15,
+    },
+  }
+);
 
-// // ScrollTriggerを使ってトゥイーンを発火させます
-// ScrollTrigger.create({
-//   trigger: ".js-product__unisex",
-//   start: "top 80%", // トリガーの表示位置を調整するために調整してください
-//   once: true,
-//   animation: unisexTl,
-// });
+// ScrollTriggerを使ってトゥイーンを発火させます
+ScrollTrigger.create({
+  trigger: ".js-product__unisex",
+  start: "top 80%", // トリガーの表示位置を調整するために調整してください
+  once: true,
+  animation: unisexTl,
+});
 
-// const kidsTl = gsap.timeline();
-// kidsTl.fromTo(
-//   ".js-product__kids li",
-//   {
-//     y: 6,
-//     autoAlpha: 0,
-//   },
-//   {
-//     y: 0,
-//     autoAlpha: 1,
-//     stagger: {
-//       each: 0.15,
-//     },
-//   }
-// );
+const kidsTl = gsap.timeline();
+kidsTl.fromTo(
+  ".js-product__kids li",
+  {
+    y: 6,
+    autoAlpha: 0,
+  },
+  {
+    y: 0,
+    autoAlpha: 1,
+    stagger: {
+      each: 0.15,
+    },
+  }
+);
 
-// // ScrollTriggerを使ってトゥイーンを発火させます
-// ScrollTrigger.create({
-//   trigger: ".js-product__kids",
-//   start: "top 80%", // トリガーの表示位置を調整するために調整してください
-//   once: true,
-//   animation: kidsTl,
-// });
+// ScrollTriggerを使ってトゥイーンを発火させます
+ScrollTrigger.create({
+  trigger: ".js-product__kids",
+  start: "top 80%", // トリガーの表示位置を調整するために調整してください
+  once: true,
+  animation: kidsTl,
+})
+}
 
+if (window.innerWidth >= 768) {
 function fadeInAndMoveUp(element, delay = 0) {
   let opacity = 0;
   let y = 6;
@@ -275,7 +278,7 @@ function setupScrollTrigger(selector, callback) {
 
 setupScrollTrigger('.js-product__unisex', () => staggeredFadeIn('.js-product__unisex li'));
 setupScrollTrigger('.js-product__kids', () => staggeredFadeIn('.js-product__kids li'));
-
+}
 // document.querySelectorAll('.js-fade').forEach((fade) => {
 //   setupScrollTrigger(fade, () => fadeInAndMoveUp(fade, 0));
 // });
@@ -336,28 +339,22 @@ fades.forEach((fade) => {
 // });
 
 document.addEventListener('scroll', function() {
-  var pInfoElement = document.getElementById('js-color-information'); // p-information要素を取得
-  var aboutElement = document.getElementById('js-color-about'); // p-information要素を取得
-  var colorProductElement = document.getElementById('js-color-product'); 
-  var pInfoElementBottom = pInfoElement.getBoundingClientRect().top; // 要素の下部のビューポートからの位置
-  var aboutElementBottom = aboutElement.getBoundingClientRect().top; // 要素の下部のビューポートからの位置
-  var colorProductElementTop = colorProductElement.getBoundingClientRect().top; 
-  var viewportHeight = window.innerHeight; // ビューポートの高さ
+  const pInfoElement = document.getElementById('js-color-information'); // p-information要素を取得
+  const aboutElement = document.getElementById('js-color-about'); // p-information要素を取得
+  const colorProductElement = document.getElementById('js-color-product'); 
+  const pInfoElementBottom = pInfoElement.getBoundingClientRect().top; // 要素の下部のビューポートからの位置
+  const aboutElementBottom = aboutElement.getBoundingClientRect().top; // 要素の下部のビューポートからの位置
+  const colorProductElementTop = colorProductElement.getBoundingClientRect().top; 
+  const viewportHeight = window.innerHeight; // ビューポートの高さ
 
   if (pInfoElementBottom <= viewportHeight && colorProductElementTop > viewportHeight) {
-    // p-information要素の下部がビューポートの下部に入り、かつ、
-    // js-color-product要素の上部がまだビューポートの下部に達していない場合
-    document.body.style.backgroundColor = '#F8F8F5'; // 背景色を変更
+    // pInfoElementBottomがビューポートの下部に入り、かつ、colorProductElementTopがまだビューポートの下部に達していない場合
+    document.body.style.backgroundColor = '#F8F8F5'; // 背景色を#F8F8F5に変更
+  } else if (aboutElementBottom <= viewportHeight && colorProductElementTop > viewportHeight) {
+    // aboutElementBottomがビューポートの下部に入り、かつ、colorProductElementTopがまだビューポートの下部に達していない場合
+    document.body.style.backgroundColor = '#FCFCFA'; // 背景色を#FCFCFAに変更
   } else if (colorProductElementTop <= viewportHeight) {
-    // js-color-product要素の上部がビューポートの下部に入った場合
-    document.body.style.backgroundColor = '#fff'; // 背景色を元に戻す
-  }
-  if (aboutElementBottom <= viewportHeight && colorProductElementTop > viewportHeight) {
-    // p-information要素の下部がビューポートの下部に入り、かつ、
-    // js-color-product要素の上部がまだビューポートの下部に達していない場合
-    document.body.style.backgroundColor = '#F8F8F5'; // 背景色を変更
-  } else if (colorProductElementTop <= viewportHeight) {
-    // js-color-product要素の上部がビューポートの下部に入った場合
+    // colorProductElementTopがビューポートの下部に入った場合
     document.body.style.backgroundColor = '#fff'; // 背景色を元に戻す
   }
 });

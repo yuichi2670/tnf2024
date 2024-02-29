@@ -36,15 +36,27 @@
     font-size: rem(11);
     letter-spacing: -0.02em;
     line-height: calc(16 / 11);
-    text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.16);
+
+    @include mq(md) {
+        font-size: rem(13);
+        line-height: calc(18 / 13);
+    }
 }
 
 .p-photos__name {
-    font-size: rem(35);
+    font-size: rem(36);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 2;
-    text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.16);
+
+    @include mq(md) {
+        font-size: rem(60);
+        line-height: 1.5;
+        text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.15);
+
+    }
 }
 
 .p-photos__text {
@@ -52,10 +64,16 @@
 }
 
 .p-photos__text p {
-    text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.16);
     font-size: rem(11);
     letter-spacing: -0.02em;
     line-height: calc(16 / 11);
+
+    @include mq(md) {
+        font-size: rem(13);
+        line-height: calc(20/13);
+        text-shadow: 0 0 rem(10) rgba(0, 0, 0, 0.20);
+    }
 }
 
 .p-photos__btn {
@@ -70,6 +88,13 @@
     display: block;
     text-align: center;
     margin-top: rem(15);
+
+    @include mq(md) {
+        font-size: rem(21);
+        width: rem(79);
+    height: rem(33);
+    line-height: rem(35);
+    }
 }
 
 .p-photos__block.is-snap-off {
