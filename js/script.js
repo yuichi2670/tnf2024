@@ -184,54 +184,103 @@ const swiper03 = new Swiper(".swiper2021", {
 |--------------------------------------------------
 */
 
-// GSAPのトゥイーンを作成します
-const unisexTl = gsap.timeline();
-unisexTl.fromTo(
-  ".js-product__unisex li",
-  {
-    y: 6,
-    autoAlpha: 0,
-  },
-  {
-    y: 0,
-    autoAlpha: 1,
-    stagger: {
-      each: 0.15,
-    },
-  }
-);
+// // GSAPのトゥイーンを作成します
+// const unisexTl = gsap.timeline();
+// unisexTl.fromTo(
+//   ".js-product__unisex li",
+//   {
+//     y: 6,
+//     autoAlpha: 0,
+//   },
+//   {
+//     y: 0,
+//     autoAlpha: 1,
+//     stagger: {
+//       each: 0.15,
+//     },
+//   }
+// );
 
-// ScrollTriggerを使ってトゥイーンを発火させます
-ScrollTrigger.create({
-  trigger: ".js-product__unisex",
-  start: "top 80%", // トリガーの表示位置を調整するために調整してください
-  once: true,
-  animation: unisexTl,
-});
+// // ScrollTriggerを使ってトゥイーンを発火させます
+// ScrollTrigger.create({
+//   trigger: ".js-product__unisex",
+//   start: "top 80%", // トリガーの表示位置を調整するために調整してください
+//   once: true,
+//   animation: unisexTl,
+// });
 
-const kidsTl = gsap.timeline();
-kidsTl.fromTo(
-  ".js-product__kids li",
-  {
-    y: 6,
-    autoAlpha: 0,
-  },
-  {
-    y: 0,
-    autoAlpha: 1,
-    stagger: {
-      each: 0.15,
-    },
-  }
-);
+// const kidsTl = gsap.timeline();
+// kidsTl.fromTo(
+//   ".js-product__kids li",
+//   {
+//     y: 6,
+//     autoAlpha: 0,
+//   },
+//   {
+//     y: 0,
+//     autoAlpha: 1,
+//     stagger: {
+//       each: 0.15,
+//     },
+//   }
+// );
 
-// ScrollTriggerを使ってトゥイーンを発火させます
-ScrollTrigger.create({
-  trigger: ".js-product__kids",
-  start: "top 80%", // トリガーの表示位置を調整するために調整してください
-  once: true,
-  animation: kidsTl,
-});
+// // ScrollTriggerを使ってトゥイーンを発火させます
+// ScrollTrigger.create({
+//   trigger: ".js-product__kids",
+//   start: "top 80%", // トリガーの表示位置を調整するために調整してください
+//   once: true,
+//   animation: kidsTl,
+// });
+
+function fadeInAndMoveUp(element, delay = 0) {
+  let opacity = 0;
+  let y = 6;
+  const step = () => {
+    opacity += 0.05;
+    y -= 0.3;
+    element.style.opacity = opacity;
+    element.style.transform = `translateY(${y}px)`;
+
+    if (opacity < 1 || y > 0) {
+      requestAnimationFrame(step);
+    }
+  };
+  setTimeout(() => requestAnimationFrame(step), delay);
+}
+
+function staggeredFadeIn(selector) {
+  const elements = document.querySelectorAll(selector);
+  elements.forEach((element, index) => {
+    fadeInAndMoveUp(element, index * 150); // 150ms stagger delay
+  });
+}
+
+function setupScrollTrigger(selector, callback) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        callback(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.5 // 50%の要素が見えたら発火
+  });
+
+  document.querySelectorAll(selector).forEach((element) => {
+    observer.observe(element);
+  });
+}
+
+setupScrollTrigger('.js-product__unisex', () => staggeredFadeIn('.js-product__unisex li'));
+setupScrollTrigger('.js-product__kids', () => staggeredFadeIn('.js-product__kids li'));
+
+// document.querySelectorAll('.js-fade').forEach((fade) => {
+//   setupScrollTrigger(fade, () => fadeInAndMoveUp(fade, 0));
+// });
+
+
 
 /**
 |--------------------------------------------------
@@ -324,7 +373,7 @@ $(window).on("scroll", function () {
     var offset = $(this).offset().top;
     var scroll = $(window).scrollTop();
     var windowHeight = $(window).height();
-    if (scroll > offset - windowHeight + 50) {
+    if (scroll > offset - windowHeight) {
       $(this).addClass("c-fade__in");
     }
   });
