@@ -1,18 +1,22 @@
 @use "global" as *;
 
 .p-about {
-    padding-top: rem(88);
-    // background-color: #fff;
+    // padding-top: rem(88);
+    background-color: #FCFCFA;
     position: relative;
     z-index: 2;
-    padding-bottom: rem(162);
-
-    @include mq(md) {
-        height: calc(var(--vh, 1vh) * 100);
-        display: flex;
+    height: calc(var(--vh, 1vh) * 100);
+    display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+    @include mq(md) {
+        // height: calc(var(--vh, 1vh) * 100);
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
     }
 }
 

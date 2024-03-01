@@ -21,15 +21,46 @@ gsap.timeline().to(
 | fvを隠すjs-sectionsの中に入ったら隠す
 |--------------------------------------------------
 */
-const header = document.querySelector(".js-header");
-ScrollTrigger.create({
-  trigger: header,
-  start: "top top",
-  end: "+=100%",
-  pinSpacing: false,
-  pin: true,
-  // markers: true,
+// const header = document.querySelector(".js-header");
+// gsap.to(header, {
+//   autoAlpha: 0,
+//   visibility: "hidden",
+//   scrollTrigger: {
+//     trigger: header,
+//     start: "bottom top",
+//     // end: "top top",
+//     // markers: true,
+//     toggleActions: "play reverse play reverse",
+//   },
+// })
+
+// スクロールイベントを監視する
+window.addEventListener('scroll', function() {
+  // js-sections要素の上部の位置を取得
+  var sectionsTop = document.querySelector('.js-sections').getBoundingClientRect().top;
+  
+  // js-header要素を取得
+  var header = document.querySelector('.js-header');
+  
+  // js-sections要素の上部がブラウザの上部と一致したかどうかを判定
+  if (sectionsTop <= 0) {
+      // 一致した場合、js-headerにis-hiddenクラスを付与
+      header.classList.add('is-hidden');
+  } else {
+      // 一致していない場合、is-hiddenクラスを削除
+      header.classList.remove('is-hidden');
+  }
 });
+
+
+// ScrollTrigger.create({
+//   trigger: header,
+//   start: "top top",
+//   end: "+=100%",
+//   pinSpacing: false,
+//   pin: true,
+//   // markers: true,
+// });
 
 /**
 |--------------------------------------------------
@@ -127,7 +158,6 @@ const swiperFv = new Swiper(".swiper-fv", {
     //ドラッグで切り替えた後に自動再生が止まらないようにするにはfalse
     disableOnInteraction: false,
   },
-  //ドラッグで切り替えたくない場合はfalse
   allowTouchMove: false,
 });
 
@@ -307,6 +337,24 @@ fades.forEach((fade) => {
     }
   );
 });
+
+const fadeAbout = document.querySelector(".js-about");
+
+  gsap.fromTo(
+    fadeAbout,
+    {
+      autoAlpha: 0,
+      y: 20,
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+      delay: .1,
+      duration: .8,
+      scrollTrigger: { trigger: fadeAbout, start: "center bottom" },
+    }
+  );
+
 
 /**
 |--------------------------------------------------
