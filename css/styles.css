@@ -387,8 +387,10 @@ body.js-color-product {
 /*======================================================
     マウスオーバー
 ======================================================*/
-.p-archive__image img:hover {
-  opacity: 0.8;
+@media screen and (min-width: 768px) {
+  .p-archive__image img:hover {
+    opacity: 0.8;
+  }
 }
 
 .p-event {
@@ -527,11 +529,11 @@ body.js-color-product {
 }
 
 .p-event__card:nth-child(1)::after {
-  background-image: url(../images/event_icon_front.svg);
+  background-image: url(../images/top/event_icon_front.svg);
 }
 
 .p-event__card:nth-child(2)::after {
-  background-image: url(../images/event_icon_back.svg);
+  background-image: url(../images/top/event_icon_back.svg);
 }
 
 .p-event__btn {
@@ -787,8 +789,8 @@ body.js-color-product {
   margin-right: auto;
 }
 .p-information__title {
-  margin-top: 32px;
-  margin-top: 2rem;
+  margin-top: 27px;
+  margin-top: 1.6875rem;
   font-size: 14px;
   font-size: 0.875rem;
   font-weight: 500;
@@ -1110,8 +1112,8 @@ body.js-color-product {
 }
 
 .p-modal__comments {
-  padding: 32px 0px 46px;
-  padding: 2rem 0rem 2.875rem;
+  padding: 8px 0px 46px;
+  padding: 0.5rem 0rem 2.875rem;
   font-family: "zen-kaku-gothic-new", sans-serif;
   color: #000343;
 }
@@ -1177,21 +1179,27 @@ body.js-color-product {
     モーダルのページネーション
 ======================================================*/
 .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 12px;
-  height: 0.75rem;
-  bottom: 10px;
-  bottom: 0.625rem;
-  left: 10px;
-  left: 0.625rem;
+  position: relative;
   z-index: 10;
 }
 
 .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
   margin: 0 3px 0 0;
   margin: 0 0.1875rem 0 0;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: 24px;
+  bottom: 1.5rem;
+  top: auto;
+  top: initial;
+  left: 10px;
+  left: 0.625rem;
+  z-index: 10;
+}
+
+.p-modal__pagination {
+  text-align: left;
 }
 
 .p-modal__pagination span {
@@ -1203,6 +1211,7 @@ body.js-color-product {
   border: 1px solid #fff;
   opacity: 1;
   margin: 0;
+  z-index: 10;
 }
 
 /* ページネーションのサイズと色 */
@@ -1214,6 +1223,7 @@ body.js-color-product {
 .swiper-slide img {
   height: auto;
   width: 100%;
+  z-index: -1;
 }
 
 .p-photos {
@@ -1575,7 +1585,7 @@ body.js-color-product {
   font-size: 10px;
   font-size: 0.625rem;
   letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 2;
 }
 
@@ -1597,6 +1607,7 @@ body.js-color-product {
   font-size: 10px;
   font-size: 0.625rem;
   font-family: "zen-kaku-gothic-new", sans-serif;
+  font-weight: 500;
 }
 
 .p-product__btn {
@@ -1631,8 +1642,10 @@ body.js-color-product {
 /*======================================================
     マウスオーバー
 ======================================================*/
-.p-product__list a:hover .p-product__btn {
-  background-color: #97CE1C;
-  color: #fff;
+@media screen and (min-width: 768px) {
+  .p-product__list a:hover .p-product__btn {
+    background-color: #97CE1C;
+    color: #fff;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

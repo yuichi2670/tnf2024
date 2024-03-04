@@ -47,5 +47,7 @@
     マウスオーバー
 ======================================================*/
 .p-archive__image img:hover {
-   opacity: .8;
+    @include mq(md) {
+        opacity: .8;
+    }
 }

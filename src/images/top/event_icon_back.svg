@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="グループ_2035" data-name="グループ 2035" transform="translate(0.337)">
+    <g id="楕円形_22" data-name="楕円形 22" transform="translate(-0.337)" fill="#fff" stroke="#000" stroke-width="1">
+      <circle cx="16" cy="16" r="16" stroke="none"/>
+      <circle cx="16" cy="16" r="15.5" fill="none"/>
+    </g>
+    <text id="裏" transform="translate(9.663 21)" font-size="12" font-family="ZenKakuGothicNew-Medium, Zen Kaku Gothic New" font-weight="500"><tspan x="0" y="0">裏</tspan></text>
+  </g>
+</svg>

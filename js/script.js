@@ -199,8 +199,8 @@ const swiper = new Swiper(".swiper2023", {
     delay: 2000,
   },
   pagination: {
-    el: ".p-modal__pagination",
-    clickable: true,
+    el: ".swiper-pagination",
+    
   },
 });
 
@@ -213,8 +213,8 @@ const swiper02 = new Swiper(".swiper2022", {
     delay: 2000,
   },
   pagination: {
-    el: ".p-modal__pagination",
-    clickable: true,
+    el: ".swiper-pagination",
+    
   },
 });
 
@@ -227,8 +227,8 @@ const swiper03 = new Swiper(".swiper2021", {
     delay: 2000,
   },
   pagination: {
-    el: ".p-modal__pagination",
-    clickable: true,
+    el: ".swiper-pagination",
+    
   },
 });
 

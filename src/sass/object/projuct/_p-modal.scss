@@ -184,7 +184,7 @@
 }
 
 .p-modal__comments {
-    padding: rem(32) rem(0) rem(46);
+    padding: rem(8) rem(0) rem(46);
     font-family: $jp-font;
     color: #000343;
 
@@ -237,18 +237,32 @@
     モーダルのページネーション
 ======================================================*/
 .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: rem(12);
-    bottom: rem(10);
-    left: rem(10);
+    // position: absolute;
+    // content: "";
+    // width: 100%;
+    // height: rem(12);
+    // bottom: rem(10);
+    // left: rem(10);
+    position: relative;
     z-index: 10;
 
 }
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
     margin: 0 rem(3) 0 0;
 }
+
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: rem(24);
+    top: initial;
+    left: rem(10);
+    z-index: 10;
+}
+
+.p-modal__pagination {
+    text-align: left;
+}
+
 .p-modal__pagination span {
     width: rem(10);
     height: rem(10);
@@ -256,6 +270,7 @@
     border: 1px solid #fff;
     opacity: 1;
     margin: 0;
+    z-index: 10;
 }
 /* ページネーションのサイズと色 */
 .p-modal__pagination .swiper-pagination-bullet-active {
@@ -265,4 +280,7 @@
 .swiper-slide img {
   height: auto;
   width: 100%;
+  z-index: -1;
 }
+
+

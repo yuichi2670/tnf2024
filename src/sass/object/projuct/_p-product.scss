@@ -109,7 +109,7 @@
 .p-product__number {
     font-size: rem(10);
     letter-spacing: -0.02em;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 2;
 
 }
@@ -129,6 +129,7 @@
     letter-spacing: -.03em;
     font-size: rem(10);
     font-family: $jp-font;
+    font-weight: 500;
 }
 
 .p-product__btn {
@@ -159,6 +160,11 @@
 ======================================================*/
 
 .p-product__list a:hover .p-product__btn {
-    background-color: #97CE1C;
-    color: #fff;
+
+    @include mq(md) {
+        background-color: #97CE1C;
+        color: #fff;
+    }
 }
+
+
