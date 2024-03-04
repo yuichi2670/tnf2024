@@ -212,3 +212,19 @@
     }
 }
  
+
+/*======================================================
+    pc偶数左右逆
+======================================================*/
+
+.p-photos__items:nth-child(even) .p-photos__imageBox {
+    @include mq(md) {
+        order: 2;
+    }
+}
+
+.p-photos__items:nth-child(even) .p-photos__imageForcePc {
+    @include mq(md) {
+        order: 1;
+    }
+}

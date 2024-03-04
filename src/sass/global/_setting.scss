@@ -111,7 +111,7 @@ $mediaquerys: (
 //モバイルのみ表示
 .u-mobile {
   @include mq("md") {
-    display: none;
+    display: none!important;
   }
 }
 

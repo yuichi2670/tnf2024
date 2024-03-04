@@ -19,7 +19,7 @@ body {
 
 @media screen and (min-width: 768px) {
   .u-mobile {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -1439,6 +1439,25 @@ body.js-color-product {
   .p-photos__btn:hover {
     background-color: #fff;
     color: #000;
+  }
+}
+
+/*======================================================
+    pc偶数左右逆
+======================================================*/
+@media screen and (min-width: 768px) {
+  .p-photos__items:nth-child(even) .p-photos__imageBox {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .p-photos__items:nth-child(even) .p-photos__imageForcePc {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 
