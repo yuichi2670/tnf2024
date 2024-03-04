@@ -94,6 +94,7 @@
         width: rem(79);
     height: rem(33);
     line-height: rem(35);
+    transition: all .3s;
     }
 }
 
@@ -135,7 +136,9 @@
 }
 
 .p-photos__imageBox {
+    margin-bottom: 1px;
     @include mq(md) {
+        margin-bottom: 0;
         height: inherit;
     }
 }
@@ -154,16 +157,28 @@
     }
 }
 
-.p-photos__imageForce {
-    // display: grid;
-    // grid-template-columns: 1fr 1fr;
-    // gap: rem(1) rem(1);
-    // margin-bottom: 1px;
-
+.p-photos__imageForcePc {
     @include mq(md) {
+        display: initial;
+        margin-top: 0;
         gap: 0 0;
         margin-bottom: 0;
         height: inherit;
+    }
+}
+
+.p-photos__imageForce {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: rem(1) rem(1);
+    margin-bottom: 1px;
+
+    @include mq(md) {
+        display: initial;
+        margin-top: 0;
+        gap: 0 0;
+        margin-bottom: 0;
+        // height: inherit;
     }
 }
 
@@ -184,3 +199,16 @@
         object-position: center;
     }
 }
+
+
+/*======================================================
+    マウスオーバー
+======================================================*/
+
+.p-photos__btn:hover {
+    @include mq(md) {
+        background-color: #fff;
+        color: #000;
+    }
+}
+ 

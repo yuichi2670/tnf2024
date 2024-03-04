@@ -16,6 +16,7 @@ gsap.timeline().to(
   "+=1"
 );
 
+
 /**
 |--------------------------------------------------
 | fvを隠すjs-sectionsの中に入ったら隠す
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleActions: "play reverse play reverse",
       },
     });
-    if (window.innerWidth >= 768) {
+
     gsap.fromTo(
       photosDetail,
       {
@@ -105,34 +106,57 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
           trigger: item,
           start: "top top",
-          end: "bottom -99%",
+          // end: "top top",
           // markers: true,
           toggleActions: "play reverse play reverse",
         },
       }
     );
-    } else {
-      gsap.fromTo(
-        photosDetail,
-        {
-          autoAlpha: 0,
-          visibility: "hidden",
-        },
-        {
-          autoAlpha: 1,
-          visibility: "visible",
-          duration: 0.3,
-          pin: true,
-          scrollTrigger: {
-            trigger: item,
-            start: "top top",
-            // end: "top top",
-            // markers: true,
-            toggleActions: "play reverse play reverse",
-          },
-        }
-      );
-    }
+
+
+    // if (window.innerWidth >= 768) {
+    // gsap.fromTo(
+    //   photosDetail,
+    //   {
+    //     autoAlpha: 0,
+    //     visibility: "hidden",
+    //   },
+    //   {
+    //     autoAlpha: 1,
+    //     visibility: "visible",
+    //     duration: 0.3,
+    //     pin: true,
+    //     scrollTrigger: {
+    //       trigger: item,
+    //       start: "top top",
+    //       end: "bottom -99%",
+    //       // markers: true,
+    //       toggleActions: "play reverse play reverse",
+    //     },
+    //   }
+    // );
+    // } else {
+    //   gsap.fromTo(
+    //     photosDetail,
+    //     {
+    //       autoAlpha: 0,
+    //       visibility: "hidden",
+    //     },
+    //     {
+    //       autoAlpha: 1,
+    //       visibility: "visible",
+    //       duration: 0.3,
+    //       pin: true,
+    //       scrollTrigger: {
+    //         trigger: item,
+    //         start: "top top",
+    //         // end: "top top",
+    //         // markers: true,
+    //         toggleActions: "play reverse play reverse",
+    //       },
+    //     }
+    //   );
+    // }
   });
 });
 
@@ -338,22 +362,29 @@ fades.forEach((fade) => {
   );
 });
 
-const fadeAbout = document.querySelector(".js-about");
+/**
+|--------------------------------------------------
+| about タイムラインでfade-in
+|--------------------------------------------------
+*/
 
-  gsap.fromTo(
-    fadeAbout,
-    {
-      autoAlpha: 0,
-      y: 20,
-    },
-    {
-      autoAlpha: 1,
-      y: 0,
-      delay: .1,
-      duration: .8,
-      scrollTrigger: { trigger: fadeAbout, start: "center bottom" },
+const aboutFade = document.querySelectorAll(".js-about-fade")
+const aboutTrigger = document.querySelector(".js-about");
+
+gsap.utils.toArray(aboutFade).forEach((elem, index) => {
+  gsap.from(elem, {
+    opacity: 0, // 開始時の透明度は0
+    y: 30, // 開始時は下から50pxの位置にある
+    duration: .8, // アニメーションの持続時間は1秒
+    delay: index * 0.2, // 要素ごとに0.2秒ずつ遅延させる
+    scrollTrigger: {
+      trigger: aboutTrigger, // トリガーとなる要素のセレクタ
+      start: "top bottom-=50%", // トリガー要素の上部がビューポートの下部から50%の位置に達したら開始
+      end: "bottom top", // トリガー要素の下部がビューポートの上部に達したら終了
+      toggleActions: "play none none none", // スクロールトリガーがアクティブになったときにアニメーションを開始
     }
-  );
+  });
+});
 
 
 /**
@@ -504,52 +535,52 @@ const setFillHeight = () => {
 window.addEventListener("resize", setFillHeight); //画面のサイズ変動があった時に高さを再計算
 setFillHeight();
 
-if (gsap && ScrollTrigger) {
-  let photoScrollTriggers = [];
-  let currentIndex = 0; // 現在のphotoItemのインデックス
-  const photoItems = gsap.utils.toArray('.js-photos__items'); // photoItemsの初期化
-  let canScroll = true; // スクロール制御のフラグ
+// if (gsap && ScrollTrigger) {
+//   let photoScrollTriggers = [];
+//   let currentIndex = 0; // 現在のphotoItemのインデックス
+//   const photoItems = gsap.utils.toArray('.js-photos__items'); // photoItemsの初期化
+//   let canScroll = true; // スクロール制御のフラグ
 
-  const applySnapping = () => {
-    const snapHeight = window.innerHeight;
+//   const applySnapping = () => {
+//     const snapHeight = window.innerHeight;
 
-    photoScrollTriggers.forEach(st => st.kill());
-    photoScrollTriggers = [];
+//     photoScrollTriggers.forEach(st => st.kill());
+//     photoScrollTriggers = [];
 
-    if (window.innerWidth >= 768) {
-      photoItems.forEach((item, index) => {
-        const trigger = gsap.to(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top top",
-            end: () => `+=${snapHeight}`, // スクロール終了位置をウィンドウの高さの倍数ではなく、固定の高さに変更
-            pin: true,
-            scrub: true,
-            snap: {
-              snapTo: "labels",
-              duration: {min: 0.2, max: 0.3},
-              delay: 0,
-              ease: "power1.inOut"
-            },
-          }
-        });
+//     if (window.innerWidth >= 768) {
+//       photoItems.forEach((item, index) => {
+//         const trigger = gsap.to(item, {
+//           scrollTrigger: {
+//             trigger: item,
+//             start: "top top",
+//             end: () => `+=${snapHeight}`, // スクロール終了位置をウィンドウの高さの倍数ではなく、固定の高さに変更
+//             pin: true,
+//             scrub: true,
+//             snap: {
+//               snapTo: "labels",
+//               duration: {min: 0.2, max: 0.3},
+//               delay: 0,
+//               ease: "power1.inOut"
+//             },
+//           }
+//         });
 
-        // スクロール速度を調整
-        trigger.scrollTrigger.scroll(onScroll);
-        photoScrollTriggers.push(trigger.scrollTrigger);
-      });
-    }
-  };
+//         // スクロール速度を調整
+//         trigger.scrollTrigger.scroll(onScroll);
+//         photoScrollTriggers.push(trigger.scrollTrigger);
+//       });
+//     }
+//   };
 
-  const onScroll = () => {
-    if (!canScroll) return;
-    canScroll = false;
-    setTimeout(() => canScroll = true, 0.8); // 調整可能な値。スクロールの速度に合わせて調整してください。
-  };
+//   const onScroll = () => {
+//     if (!canScroll) return;
+//     canScroll = false;
+//     setTimeout(() => canScroll = true, 0.8); // 調整可能な値。スクロールの速度に合わせて調整してください。
+//   };
 
-  applySnapping();
-  // window.addEventListener('resize', gsap.utils.debounce(applySnapping, 250));
-}
+//   applySnapping();
+//   // window.addEventListener('resize', gsap.utils.debounce(applySnapping, 250));
+// }
 
 
 

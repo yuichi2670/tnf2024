@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* リキッドレイアウト対応 */
 body {
-  font-family: bookmania, serif;
+  font-family: "bookmania", serif;
   color: #000;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -303,7 +303,7 @@ body.js-color-product {
 .p-about__sub {
   margin-top: 70px;
   margin-top: 4.375rem;
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-family: "zen-kaku-gothic-new", sans-serif;
   font-weight: 500;
   line-height: 2;
   text-align: center;
@@ -319,7 +319,7 @@ body.js-color-product {
 .p-about__text {
   margin-top: 30px;
   margin-top: 1.875rem;
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-family: "zen-kaku-gothic-new", sans-serif;
   font-weight: 500;
   line-height: 2.0769230769;
   font-size: 13px;
@@ -406,7 +406,7 @@ body.js-color-product {
   font-size: 20px;
   font-size: 1.25rem;
   font-weight: 500;
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-family: "zen-kaku-gothic-new", sans-serif;
 }
 @media screen and (min-width: 768px) {
   .p-event__title {
@@ -451,7 +451,7 @@ body.js-color-product {
 
 .p-event__info {
   font-weight: 500;
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-family: "zen-kaku-gothic-new", sans-serif;
   font-size: 16px;
   font-size: 1rem;
 }
@@ -472,9 +472,10 @@ body.js-color-product {
 }
 
 .p-event__texts p {
+  font-weight: 500;
   font-size: 13px;
   font-size: 0.8125rem;
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-family: "zen-kaku-gothic-new", sans-serif;
   line-height: 2;
 }
 @media screen and (min-width: 768px) {
@@ -761,7 +762,7 @@ body.js-color-product {
 }
 
 .p-information__contents {
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-family: "zen-kaku-gothic-new", sans-serif;
 }
 
 .p-information__images {
@@ -845,6 +846,7 @@ body.js-color-product {
   border-radius: 2.25rem;
   text-align: center;
   display: block;
+  font-weight: 500;
 }
 @media screen and (min-width: 768px) {
   .p-information__btn {
@@ -1110,7 +1112,7 @@ body.js-color-product {
 .p-modal__comments {
   padding: 32px 0px 46px;
   padding: 2rem 0rem 2.875rem;
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-family: "zen-kaku-gothic-new", sans-serif;
   color: #000343;
 }
 @media screen and (min-width: 768px) {
@@ -1319,6 +1321,8 @@ body.js-color-product {
     width: 4.9375rem;
     height: 2.0625rem;
     line-height: 2.1875rem;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
   }
 }
 
@@ -1354,8 +1358,12 @@ body.js-color-product {
   }
 }
 
+.p-photos__imageBox {
+  margin-bottom: 1px;
+}
 @media screen and (min-width: 768px) {
   .p-photos__imageBox {
+    margin-bottom: 0;
     height: inherit;
   }
 }
@@ -1376,10 +1384,30 @@ body.js-color-product {
 }
 
 @media screen and (min-width: 768px) {
-  .p-photos__imageForce {
+  .p-photos__imageForcePc {
+    display: inline;
+    display: initial;
+    margin-top: 0;
     gap: 0 0;
     margin-bottom: 0;
     height: inherit;
+  }
+}
+
+.p-photos__imageForce {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px 1px;
+  gap: 0.0625rem 0.0625rem;
+  margin-bottom: 1px;
+}
+@media screen and (min-width: 768px) {
+  .p-photos__imageForce {
+    display: inline;
+    display: initial;
+    margin-top: 0;
+    gap: 0 0;
+    margin-bottom: 0;
   }
 }
 
@@ -1401,6 +1429,16 @@ body.js-color-product {
        object-fit: cover;
     -o-object-position: center;
        object-position: center;
+  }
+}
+
+/*======================================================
+    マウスオーバー
+======================================================*/
+@media screen and (min-width: 768px) {
+  .p-photos__btn:hover {
+    background-color: #fff;
+    color: #000;
   }
 }
 
@@ -1539,7 +1577,7 @@ body.js-color-product {
   letter-spacing: -0.03em;
   font-size: 10px;
   font-size: 0.625rem;
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-family: "zen-kaku-gothic-new", sans-serif;
 }
 
 .p-product__btn {

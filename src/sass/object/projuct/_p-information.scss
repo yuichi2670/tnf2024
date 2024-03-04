@@ -99,6 +99,7 @@
     border-radius: rem(36);
     text-align: center;
     display: block;
+    font-weight: 500;
 
     @include mq(md) {
         margin-top: rem(46);
