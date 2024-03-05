@@ -17,6 +17,13 @@
     z-index: 10;
 }
 
+.p-photos__info.is-index {
+    @include mq(md) {
+        position: relative;
+        z-index: -1;
+    }
+}
+
 .p-photos__details {
     position: absolute;
     top: 0;
@@ -27,10 +34,21 @@
     padding-left: rem(16);
     opacity: 0;
 
+
     @include mq(md) {
         // height: calc(var(--vh, 1vh) * 100);
+        // transition-delay: .4s;
+        // transition-duration: .2s;
+        // transition-property: opacity;
     }
 }
+
+.p-photos__details.-active {
+    @include mq(md) {
+        opacity: 1;
+    }
+}
+
 
 .p-photos__number {
     font-size: rem(11);

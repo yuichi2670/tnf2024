@@ -1289,6 +1289,13 @@ body.js-color-product {
   z-index: 10;
 }
 
+@media screen and (min-width: 768px) {
+  .p-photos__info.is-index {
+    position: relative;
+    z-index: -1;
+  }
+}
+
 .p-photos__details {
   position: absolute;
   top: 0;
@@ -1301,6 +1308,12 @@ body.js-color-product {
   padding-left: 1rem;
   opacity: 0;
 }
+@media screen and (min-width: 768px) {
+  .p-photos__details.-active {
+    opacity: 1;
+  }
+}
+
 .p-photos__number {
   font-size: 11px;
   font-size: 0.6875rem;

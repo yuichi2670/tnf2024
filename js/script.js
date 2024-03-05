@@ -1,4 +1,38 @@
+document.addEventListener("DOMContentLoaded", function () {
+  var infoItems = document.querySelectorAll(".p-photos__details");
+      infoItems.forEach(function (infoItem) {
+        infoItem.classList.remove("-active");
+      });
+});
 
+if (window.innerWidth >= 768) {
+  // l-snap内の要素を取得
+  document.addEventListener("DOMContentLoaded", function () {
+    var lSnapElement = document.querySelector(".l-snap");
+
+    // l-snap内のスクロールイベントをキャッチする
+    lSnapElement.addEventListener("scroll", function () {
+      // js-photos__itemsとjs-photos__infoの要素を取得
+      var items = document.querySelectorAll(".js-photos__items.-pc");
+      var infoItems = document.querySelectorAll(".p-photos__details");
+
+      // l-snapのスクロール位置を取得
+      var scrollTop = lSnapElement.scrollTop;
+
+      // 各要素に対して処理を行う
+      items.forEach(function (item, index) {
+        var itemHeight = item.getBoundingClientRect().height;
+        var itemTop = item.getBoundingClientRect().top;
+
+        if (itemTop <= 0 && itemTop > itemHeight * -1) {
+          infoItems[index].classList.add("-active");
+        } else {
+          infoItems[index].classList.remove("-active");
+        }
+      });
+    });
+  });
+}
 
 /**
 |--------------------------------------------------
@@ -6,36 +40,52 @@
 |--------------------------------------------------
 */
 
-var lookItems = document.querySelector('.js-snap');
+if (window.innerWidth >= 768) {
+  var lookItems = document.querySelector(".js-snap");
 
-lookItems.addEventListener('scroll', function() {
-  var scrollableHeight = lookItems.scrollHeight - lookItems.clientHeight;
-  var currentScroll = lookItems.scrollTop;
-  if (currentScroll > scrollableHeight + 10) {
-    lookItems.classList.add('is-scroll-fixed');
-  } else {
-    lookItems.classList.remove('is-scroll-fixed');
-  }
-});
+  lookItems.addEventListener("scroll", function () {
+    var scrollableHeight = lookItems.scrollHeight - lookItems.clientHeight;
+    var currentScroll = lookItems.scrollTop;
+    if (currentScroll > scrollableHeight + 10) {
+      lookItems.classList.add("is-scroll-fixed");
+    } else {
+      lookItems.classList.remove("is-scroll-fixed");
+    }
+  });
 
-var element = document.querySelector('.js-snap-finish');
-// スクロール時の処理
-window.addEventListener('scroll', function() {
-  // 要素の位置情報を取得
-  var rect = element.getBoundingClientRect();
-  // 画面の高さ
-  var windowHeight = window.innerHeight;
-  // 要素のtopが画面の真下にきたかどうかを判定
-  var isElementAtBottom = rect.top + 1 <= windowHeight;
-  if (isElementAtBottom) {
-    // p-look__goodsが画面の真下にきたときの処理
-    console.log('p-look__goodsが画面に表示されました。');
-    lookItems.classList.add('is-scroll-fixed');
-  } else {
-    console.log('p-look__goodsが画面から消えました。');
-    lookItems.classList.remove('is-scroll-fixed')
-  }
-});
+  var element = document.querySelector(".js-snap-finish");
+  // スクロール時の処理
+  window.addEventListener("scroll", function () {
+    // 要素の位置情報を取得
+    var rect = element.getBoundingClientRect();
+    // 画面の高さ
+    var windowHeight = window.innerHeight;
+    // 要素のtopが画面の真下にきたかどうかを判定
+    var isElementAtBottom = rect.top + 1 <= windowHeight;
+    if (isElementAtBottom) {
+      // p-look__goodsが画面の真下にきたときの処理
+      console.log("p-look__goodsが画面に表示されました。");
+      lookItems.classList.add("is-scroll-fixed");
+
+      var infoItems = document.querySelectorAll(".p-photos__details");
+      infoItems.forEach(function (infoItem) {
+        infoItem.classList.remove("-active");
+      });
+    } else {
+      console.log("p-look__goodsが画面から消えました。");
+      lookItems.classList.remove("is-scroll-fixed");
+      var infoItems = document.querySelectorAll(".p-photos__details");
+      let lastItem;
+      infoItems.forEach(function (item, index) {
+        if (index === infoItems.length - 1) {
+          // ループ中に最後の要素を見つける
+          lastItem = item;
+        }
+      });
+      lastItem.classList.add("-active");
+    }
+  });
+}
 /**
 |--------------------------------------------------
 | fv オープニング
@@ -53,40 +103,27 @@ gsap.timeline().to(
   "+=1"
 );
 
-
 /**
 |--------------------------------------------------
 | fvを隠すjs-sectionsの中に入ったら隠す
 |--------------------------------------------------
 */
-window.addEventListener('scroll', function() {
-  var hiddenElements = document.querySelectorAll('.js-hidden');
-  var header = document.querySelector('.js-header');
+window.addEventListener("scroll", function () {
+  var hiddenElements = document.querySelectorAll(".js-hidden");
+  var header = document.querySelector(".js-header");
   var shouldBeHidden = false;
-  hiddenElements.forEach(function(element) {
-      var elementTop = element.getBoundingClientRect().top;
-      if (elementTop <= 0) {
-          shouldBeHidden = true;
-      }
+  hiddenElements.forEach(function (element) {
+    var elementTop = element.getBoundingClientRect().top;
+    if (elementTop <= 0) {
+      shouldBeHidden = true;
+    }
   });
   if (shouldBeHidden) {
-      header.classList.add('is-hidden');
+    header.classList.add("is-hidden");
   } else {
-      header.classList.remove('is-hidden');
+    header.classList.remove("is-hidden");
   }
 });
-
-
-
-// ScrollTrigger.create({
-//   trigger: header,
-//   start: "top top",
-//   end: "+=100%",
-//   pinSpacing: false,
-//   pin: true,
-//   // markers: true,
-// });
-
 /**
 |--------------------------------------------------
 | 商品詳細項目の切り替え
@@ -94,99 +131,73 @@ window.addEventListener('scroll', function() {
 */
 // 各画像グループが画面最上部に来たら一致するIDのものを表示して、各画像グループの最下部が画面上部から消えたら消す
 
-document.addEventListener("DOMContentLoaded", function () {
-  const photosDetail = document.getElementById("js-photos__detail");
-  const photoItems = document.querySelectorAll(".js-photos__items");
-  const photoInfo = document.querySelector(".js-photos__info");
-  const photoBlocks = document.querySelector(".js-photos__block");
-  const photoChild = document.querySelectorAll(".js-photos__child");
+if (window.innerWidth <= 767) {
+  document.addEventListener("DOMContentLoaded", function () {
+    const photosDetail = document.getElementById("js-photos__detail");
+    const photosDetailPc = document.getElementById("js-photos-pc__detail");
+    const photoItems = document.querySelectorAll(".js-photos__items");
+    const photoInfo = document.querySelector(".js-photos__info");
+    const photoBlocks = document.querySelector(".js-photos__block");
 
-  photoItems.forEach((item) => {
-    const targetId = item.getAttribute("href");
-    const photosDetail = document.querySelector(targetId);
+    photoItems.forEach((item) => {
+      const targetId = item.getAttribute("data-target-id"); // 修正された部分
+      const photosDetail = document.querySelector(targetId);
+      const photosDetailPc = document.querySelector(targetId);
 
-    gsap.to(photoInfo, {
-      autoAlpha: 0,
-      duration: 0.3,
-      scrollTrigger: {
-        trigger: photoBlocks,
-        start: "bottom-=190px top",
-        // markers: true,
-        toggleActions: "play reverse play reverse",
-      },
-    });
-
-    gsap.fromTo(
-      photosDetail,
-      {
+      gsap.to(photoInfo, {
         autoAlpha: 0,
-        visibility: "hidden",
-      },
-      {
-        autoAlpha: 1,
-        visibility: "visible",
         duration: 0.3,
-        pin: true,
         scrollTrigger: {
-          trigger: item,
+          trigger: photoBlocks,
           start: "top top",
-          // end: "top top",
           // markers: true,
           toggleActions: "play reverse play reverse",
         },
-      }
-    );
+      });
 
-
-    // if (window.innerWidth >= 768) {
-    // gsap.fromTo(
-    //   photosDetail,
-    //   {
-    //     autoAlpha: 0,
-    //     visibility: "hidden",
-    //   },
-    //   {
-    //     autoAlpha: 1,
-    //     visibility: "visible",
-    //     duration: 0.3,
-    //     pin: true,
-    //     scrollTrigger: {
-    //       trigger: item,
-    //       start: "top top",
-    //       end: "bottom -99%",
-    //       // markers: true,
-    //       toggleActions: "play reverse play reverse",
-    //     },
-    //   }
-    // );
-    // } else {
-    //   gsap.fromTo(
-    //     photosDetail,
-    //     {
-    //       autoAlpha: 0,
-    //       visibility: "hidden",
-    //     },
-    //     {
-    //       autoAlpha: 1,
-    //       visibility: "visible",
-    //       duration: 0.3,
-    //       pin: true,
-    //       scrollTrigger: {
-    //         trigger: item,
-    //         start: "top top",
-    //         // end: "top top",
-    //         // markers: true,
-    //         toggleActions: "play reverse play reverse",
-    //       },
-    //     }
-    //   );
-    // }
+      gsap.fromTo(
+        photosDetail,
+        {
+          autoAlpha: 0,
+          visibility: "hidden",
+        },
+        {
+          autoAlpha: 1,
+          visibility: "visible",
+          duration: 0.3,
+          pin: true,
+          scrollTrigger: {
+            trigger: item,
+            start: "top top",
+            // end: "top top",
+            // markers: true,
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+      gsap.fromTo(
+        photosDetailPc,
+        {
+          autoAlpha: 0,
+          visibility: "hidden",
+        },
+        {
+          autoAlpha: 1,
+          visibility: "visible",
+          duration: 0.3,
+          pin: true,
+          scrollTrigger: {
+            trigger: item,
+            start: "top top",
+            // end: "top top",
+            // markers: true,
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    });
   });
-});
-
-
-
-
+}
 
 /**
 |--------------------------------------------------
@@ -224,7 +235,6 @@ const swiper = new Swiper(".swiper2023", {
   },
   pagination: {
     el: ".swiper-pagination",
-    
   },
 });
 
@@ -238,7 +248,6 @@ const swiper02 = new Swiper(".swiper2022", {
   },
   pagination: {
     el: ".swiper-pagination",
-    
   },
 });
 
@@ -252,7 +261,6 @@ const swiper03 = new Swiper(".swiper2021", {
   },
   pagination: {
     el: ".swiper-pagination",
-    
   },
 });
 
@@ -263,105 +271,110 @@ const swiper03 = new Swiper(".swiper2021", {
 */
 
 if (window.innerWidth <= 767) {
-// GSAPのトゥイーンを作成します
-const unisexTl = gsap.timeline();
-unisexTl.fromTo(
-  ".js-product__unisex li",
-  {
-    y: 6,
-    autoAlpha: 0,
-  },
-  {
-    y: 0,
-    autoAlpha: 1,
-    stagger: {
-      each: 0.15,
+  // GSAPのトゥイーンを作成します
+  const unisexTl = gsap.timeline();
+  unisexTl.fromTo(
+    ".js-product__unisex li",
+    {
+      y: 6,
+      autoAlpha: 0,
     },
-  }
-);
+    {
+      y: 0,
+      autoAlpha: 1,
+      stagger: {
+        each: 0.15,
+      },
+    }
+  );
 
-// ScrollTriggerを使ってトゥイーンを発火させます
-ScrollTrigger.create({
-  trigger: ".js-product__unisex",
-  start: "top 80%", // トリガーの表示位置を調整するために調整してください
-  once: true,
-  animation: unisexTl,
-});
+  // ScrollTriggerを使ってトゥイーンを発火させます
+  ScrollTrigger.create({
+    trigger: ".js-product__unisex",
+    start: "top 80%", // トリガーの表示位置を調整するために調整してください
+    once: true,
+    animation: unisexTl,
+  });
 
-const kidsTl = gsap.timeline();
-kidsTl.fromTo(
-  ".js-product__kids li",
-  {
-    y: 6,
-    autoAlpha: 0,
-  },
-  {
-    y: 0,
-    autoAlpha: 1,
-    stagger: {
-      each: 0.15,
+  const kidsTl = gsap.timeline();
+  kidsTl.fromTo(
+    ".js-product__kids li",
+    {
+      y: 6,
+      autoAlpha: 0,
     },
-  }
-);
+    {
+      y: 0,
+      autoAlpha: 1,
+      stagger: {
+        each: 0.15,
+      },
+    }
+  );
 
-// ScrollTriggerを使ってトゥイーンを発火させます
-ScrollTrigger.create({
-  trigger: ".js-product__kids",
-  start: "top 80%", // トリガーの表示位置を調整するために調整してください
-  once: true,
-  animation: kidsTl,
-})
+  // ScrollTriggerを使ってトゥイーンを発火させます
+  ScrollTrigger.create({
+    trigger: ".js-product__kids",
+    start: "top 80%", // トリガーの表示位置を調整するために調整してください
+    once: true,
+    animation: kidsTl,
+  });
 }
 
 if (window.innerWidth >= 768) {
-function fadeInAndMoveUp(element, delay = 0) {
-  let opacity = 0;
-  let y = 6;
-  const step = () => {
-    opacity += 0.05;
-    y -= 0.3;
-    element.style.opacity = opacity;
-    element.style.transform = `translateY(${y}px)`;
+  function fadeInAndMoveUp(element, delay = 0) {
+    let opacity = 0;
+    let y = 6;
+    const step = () => {
+      opacity += 0.05;
+      y -= 0.3;
+      element.style.opacity = opacity;
+      element.style.transform = `translateY(${y}px)`;
 
-    if (opacity < 1 || y > 0) {
-      requestAnimationFrame(step);
-    }
-  };
-  setTimeout(() => requestAnimationFrame(step), delay);
-}
-
-function staggeredFadeIn(selector) {
-  const elements = document.querySelectorAll(selector);
-  elements.forEach((element, index) => {
-    fadeInAndMoveUp(element, index * 150); // 150ms stagger delay
-  });
-}
-
-function setupScrollTrigger(selector, callback) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        callback(entry.target);
-        observer.unobserve(entry.target);
+      if (opacity < 1 || y > 0) {
+        requestAnimationFrame(step);
       }
+    };
+    setTimeout(() => requestAnimationFrame(step), delay);
+  }
+
+  function staggeredFadeIn(selector) {
+    const elements = document.querySelectorAll(selector);
+    elements.forEach((element, index) => {
+      fadeInAndMoveUp(element, index * 150); // 150ms stagger delay
     });
-  }, {
-    threshold: 0.5 // 50%の要素が見えたら発火
-  });
+  }
 
-  document.querySelectorAll(selector).forEach((element) => {
-    observer.observe(element);
-  });
-}
+  function setupScrollTrigger(selector, callback) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            callback(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.5, // 50%の要素が見えたら発火
+      }
+    );
 
-setupScrollTrigger('.js-product__unisex', () => staggeredFadeIn('.js-product__unisex li'));
-setupScrollTrigger('.js-product__kids', () => staggeredFadeIn('.js-product__kids li'));
+    document.querySelectorAll(selector).forEach((element) => {
+      observer.observe(element);
+    });
+  }
+
+  setupScrollTrigger(".js-product__unisex", () =>
+    staggeredFadeIn(".js-product__unisex li")
+  );
+  setupScrollTrigger(".js-product__kids", () =>
+    staggeredFadeIn(".js-product__kids li")
+  );
 }
 // document.querySelectorAll('.js-fade').forEach((fade) => {
 //   setupScrollTrigger(fade, () => fadeInAndMoveUp(fade, 0));
 // });
-
-
 
 /**
 |--------------------------------------------------
@@ -393,62 +406,65 @@ fades.forEach((fade) => {
 */
 
 if (window.innerWidth <= 767) {
-const aboutFade = document.querySelectorAll(".js-about-fade")
-const aboutTrigger = document.querySelector(".js-about");
+  const aboutFade = document.querySelectorAll(".js-about-fade");
+  const aboutTrigger = document.querySelector(".js-about");
 
-gsap.utils.toArray(aboutFade).forEach((elem, index) => {
-  gsap.from(elem, {
-    opacity: 0, // 開始時の透明度は0
-    y: 30, // 開始時は下から50pxの位置にある
-    duration: .8, // アニメーションの持続時間は1秒
-    delay: index * 0.2, // 要素ごとに0.2秒ずつ遅延させる
-    scrollTrigger: {
-      trigger: aboutTrigger, // トリガーとなる要素のセレクタ
-      start: "top bottom-=50%", // トリガー要素の上部がビューポートの下部から50%の位置に達したら開始
-      end: "bottom top", // トリガー要素の下部がビューポートの上部に達したら終了
-      toggleActions: "play none none none", // スクロールトリガーがアクティブになったときにアニメーションを開始
-    }
-  });
-});
-}
-
-if (window.innerWidth >= 767) {
-document.addEventListener('DOMContentLoaded', function() {
-  const aboutFadeElements = document.querySelectorAll('.js-about-fade');
-  const aboutTrigger = document.querySelector('.js-about');
-
-  // IntersectionObserverのコールバック関数
-  const observerCallback = (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const target = entry.target;
-        target.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-        target.style.opacity = 1;
-        target.style.transform = 'translateY(0px)';
-        observer.unobserve(target); // アニメーション後は監視を解除
-      }
+  gsap.utils.toArray(aboutFade).forEach((elem, index) => {
+    gsap.from(elem, {
+      opacity: 0, // 開始時の透明度は0
+      y: 30, // 開始時は下から50pxの位置にある
+      duration: 0.8, // アニメーションの持続時間は1秒
+      delay: index * 0.2, // 要素ごとに0.2秒ずつ遅延させる
+      scrollTrigger: {
+        trigger: aboutTrigger, // トリガーとなる要素のセレクタ
+        start: "top bottom-=50%", // トリガー要素の上部がビューポートの下部から50%の位置に達したら開始
+        end: "bottom top", // トリガー要素の下部がビューポートの上部に達したら終了
+        toggleActions: "play none none none", // スクロールトリガーがアクティブになったときにアニメーションを開始
+      },
     });
-  };
-
-  // IntersectionObserverの設定
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 1
-  };
-
-  // IntersectionObserverインスタンスの生成
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  // aboutFadeElementsのそれぞれに対して監視を開始
-  aboutFadeElements.forEach((elem, index) => {
-    elem.style.opacity = 0;
-    elem.style.transform = 'translateY(20px)';
-    observer.observe(elem);
   });
-});
 }
 
+if (window.innerWidth >= 768) {
+  document.addEventListener("DOMContentLoaded", function () {
+    const aboutFadeElements = document.querySelectorAll(".js-about-fade");
+    const aboutTrigger = document.querySelector(".js-about");
+
+    // IntersectionObserverのコールバック関数
+    const observerCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          target.style.transition =
+            "opacity 0.8s ease-out, transform 0.8s ease-out";
+          target.style.opacity = 1;
+          target.style.transform = "translateY(0px)";
+          observer.unobserve(target); // アニメーション後は監視を解除
+        }
+      });
+    };
+
+    // IntersectionObserverの設定
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1,
+    };
+
+    // IntersectionObserverインスタンスの生成
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    // aboutFadeElementsのそれぞれに対して監視を開始
+    aboutFadeElements.forEach((elem, index) => {
+      elem.style.opacity = 0;
+      elem.style.transform = "translateY(20px)";
+      observer.observe(elem);
+    });
+  });
+}
 
 /**
 |--------------------------------------------------
@@ -456,53 +472,33 @@ document.addEventListener('DOMContentLoaded', function() {
 |--------------------------------------------------
 */
 
-// const sectionColors = document.querySelectorAll(".js-color-change");
-// sectionColors.forEach((sectionColor) => {
-//   const sectionColorId = sectionColor.id;
-//   // アニメーション
-//   gsap.to("body", {
-//     delay: 0.1,
-//     duration: 0.1,
-//     ease: "Power1.easeInOut", // イージング関数を追加
-//     scrollTrigger: {
-//       trigger: sectionColor,
-//       start: "top bottom",
-//       toggleActions: "play reverse play reverse",
-//       markers: true,
-//       toggleClass: {
-//         targets: [
-//           "body",
-//           // 追加のクラスやセレクタをここに追加
-//         ],
-//         className: sectionColorId,
-//       },
-//     },
-//   });
-// });
-
-document.addEventListener('scroll', function() {
-  const pInfoElement = document.getElementById('js-color-information'); // p-information要素を取得
-  const aboutElement = document.getElementById('js-color-about'); // p-information要素を取得
-  const colorProductElement = document.getElementById('js-color-product'); 
+document.addEventListener("scroll", function () {
+  const pInfoElement = document.getElementById("js-color-information"); // p-information要素を取得
+  const aboutElement = document.getElementById("js-color-about"); // p-information要素を取得
+  const colorProductElement = document.getElementById("js-color-product");
   const pInfoElementBottom = pInfoElement.getBoundingClientRect().top; // 要素の下部のビューポートからの位置
   const aboutElementBottom = aboutElement.getBoundingClientRect().top; // 要素の下部のビューポートからの位置
-  const colorProductElementTop = colorProductElement.getBoundingClientRect().top; 
+  const colorProductElementTop =
+    colorProductElement.getBoundingClientRect().top;
   const viewportHeight = window.innerHeight; // ビューポートの高さ
 
-  if (pInfoElementBottom <= viewportHeight && colorProductElementTop > viewportHeight) {
+  if (
+    pInfoElementBottom <= viewportHeight &&
+    colorProductElementTop > viewportHeight
+  ) {
     // pInfoElementBottomがビューポートの下部に入り、かつ、colorProductElementTopがまだビューポートの下部に達していない場合
-    document.body.style.backgroundColor = '#F8F8F5'; // 背景色を#F8F8F5に変更
-  } else if (aboutElementBottom <= viewportHeight && colorProductElementTop > viewportHeight) {
+    document.body.style.backgroundColor = "#F8F8F5"; // 背景色を#F8F8F5に変更
+  } else if (
+    aboutElementBottom <= viewportHeight &&
+    colorProductElementTop > viewportHeight
+  ) {
     // aboutElementBottomがビューポートの下部に入り、かつ、colorProductElementTopがまだビューポートの下部に達していない場合
-    document.body.style.backgroundColor = '#FCFCFA'; // 背景色を#FCFCFAに変更
+    document.body.style.backgroundColor = "#FCFCFA"; // 背景色を#FCFCFAに変更
   } else if (colorProductElementTop <= viewportHeight) {
     // colorProductElementTopがビューポートの下部に入った場合
-    document.body.style.backgroundColor = '#fff'; // 背景色を元に戻す
+    document.body.style.backgroundColor = "#fff"; // 背景色を元に戻す
   }
 });
-
-
-
 
 /**
 |--------------------------------------------------
@@ -519,35 +515,6 @@ $(window).on("scroll", function () {
       $(this).addClass("c-fade__in");
     }
   });
-});
-
-var photosBlocks = document.querySelector(".js-photos__block");
-photosBlocks.addEventListener("scroll", function () {
-  var scrollableHeight = photosBlocks.scrollHeight - photosBlocks.clientHeight;
-  var currentScroll = photosBlocks.scrollTop;
-  if (currentScroll > scrollableHeight + 10) {
-    photosBlocks.classList.add("is-scroll-fixed");
-  } else {
-    photosBlocks.classList.remove("is-scroll-fixed");
-  }
-});
-var photosBlocksBack = document.querySelector(".js-information");
-// スクロール時の処理
-window.addEventListener("scroll", function () {
-  // 要素の位置情報を取得
-  var rect = photosBlocksBack.getBoundingClientRect();
-  // 画面の高さ
-  var windowHeight = window.innerHeight;
-  // 要素のtopが画面の真下にきたかどうかを判定
-  var isPhotosBlocksBackAtBottom = rect.top + 1 <= windowHeight;
-  if (isPhotosBlocksBackAtBottom) {
-    // p-look__goodsが画面の真下にきたときの処理
-    console.log("p-look__goodsが画面に表示されました。");
-    photosBlocks.classList.add("is-scroll-fixed");
-  } else {
-    console.log("p-look__goodsが画面から消えました。");
-    photosBlocks.classList.remove("is-scroll-fixed");
-  }
 });
 
 /**
@@ -600,56 +567,3 @@ const setFillHeight = () => {
 
 window.addEventListener("resize", setFillHeight); //画面のサイズ変動があった時に高さを再計算
 setFillHeight();
-
-
-
-
-// if (gsap && ScrollTrigger) {
-//   let photoScrollTriggers = [];
-//   let currentIndex = 0; // 現在のphotoItemのインデックス
-//   const photoItems = gsap.utils.toArray('.js-photos__items'); // photoItemsの初期化
-//   let canScroll = true; // スクロール制御のフラグ
-
-//   const applySnapping = () => {
-//     const snapHeight = window.innerHeight;
-
-//     photoScrollTriggers.forEach(st => st.kill());
-//     photoScrollTriggers = [];
-
-//     if (window.innerWidth >= 768) {
-//       photoItems.forEach((item, index) => {
-//         const trigger = gsap.to(item, {
-//           scrollTrigger: {
-//             trigger: item,
-//             start: "top top",
-//             end: () => `+=${snapHeight}`, // スクロール終了位置をウィンドウの高さの倍数ではなく、固定の高さに変更
-//             pin: true,
-//             scrub: true,
-//             snap: {
-//               snapTo: "labels",
-//               duration: {min: 0.2, max: 0.3},
-//               delay: 0,
-//               ease: "power1.inOut"
-//             },
-//           }
-//         });
-
-//         // スクロール速度を調整
-//         trigger.scrollTrigger.scroll(onScroll);
-//         photoScrollTriggers.push(trigger.scrollTrigger);
-//       });
-//     }
-//   };
-
-//   const onScroll = () => {
-//     if (!canScroll) return;
-//     canScroll = false;
-//     setTimeout(() => canScroll = true, 0.8); // 調整可能な値。スクロールの速度に合わせて調整してください。
-//   };
-
-//   applySnapping();
-//   // window.addEventListener('resize', gsap.utils.debounce(applySnapping, 250));
-// }
-
-
-
