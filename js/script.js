@@ -392,6 +392,27 @@ fades.forEach((fade) => {
 |--------------------------------------------------
 */
 
+if (window.innerWidth <= 767) {
+const aboutFade = document.querySelectorAll(".js-about-fade")
+const aboutTrigger = document.querySelector(".js-about");
+
+gsap.utils.toArray(aboutFade).forEach((elem, index) => {
+  gsap.from(elem, {
+    opacity: 0, // 開始時の透明度は0
+    y: 30, // 開始時は下から50pxの位置にある
+    duration: .8, // アニメーションの持続時間は1秒
+    delay: index * 0.2, // 要素ごとに0.2秒ずつ遅延させる
+    scrollTrigger: {
+      trigger: aboutTrigger, // トリガーとなる要素のセレクタ
+      start: "top bottom-=50%", // トリガー要素の上部がビューポートの下部から50%の位置に達したら開始
+      end: "bottom top", // トリガー要素の下部がビューポートの上部に達したら終了
+      toggleActions: "play none none none", // スクロールトリガーがアクティブになったときにアニメーションを開始
+    }
+  });
+});
+}
+
+if (window.innerWidth >= 767) {
 document.addEventListener('DOMContentLoaded', function() {
   const aboutFadeElements = document.querySelectorAll('.js-about-fade');
   const aboutTrigger = document.querySelector('.js-about');
@@ -413,7 +434,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.3
+    threshold: 1
   };
 
   // IntersectionObserverインスタンスの生成
@@ -422,11 +443,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // aboutFadeElementsのそれぞれに対して監視を開始
   aboutFadeElements.forEach((elem, index) => {
     elem.style.opacity = 0;
-    elem.style.transform = 'translateY(30px)';
+    elem.style.transform = 'translateY(20px)';
     observer.observe(elem);
   });
 });
-
+}
 
 
 /**
