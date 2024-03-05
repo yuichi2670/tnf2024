@@ -1,9 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-  var infoItems = document.querySelectorAll(".p-photos__details");
-      infoItems.forEach(function (infoItem) {
-        infoItem.classList.remove("-active");
-      });
-});
+
 
 if (window.innerWidth >= 768) {
   // l-snap内の要素を取得
@@ -40,52 +35,55 @@ if (window.innerWidth >= 768) {
 |--------------------------------------------------
 */
 
-if (window.innerWidth >= 768) {
-  var lookItems = document.querySelector(".js-snap");
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.innerWidth >= 768) {
+    var lookItems = document.querySelector(".js-snap");
 
-  lookItems.addEventListener("scroll", function () {
-    var scrollableHeight = lookItems.scrollHeight - lookItems.clientHeight;
-    var currentScroll = lookItems.scrollTop;
-    if (currentScroll > scrollableHeight + 10) {
-      lookItems.classList.add("is-scroll-fixed");
-    } else {
-      lookItems.classList.remove("is-scroll-fixed");
-    }
-  });
+    lookItems.addEventListener("scroll", function() {
+      var scrollableHeight = lookItems.scrollHeight - lookItems.clientHeight;
+      var currentScroll = lookItems.scrollTop;
+      if (currentScroll > scrollableHeight + 10 && !lookItems.classList.contains("is-scroll-fixed")) {
+        lookItems.classList.add("is-scroll-fixed");
+      } else if (currentScroll <= scrollableHeight + 10 && lookItems.classList.contains("is-scroll-fixed")) {
+        lookItems.classList.remove("is-scroll-fixed");
+      }
+    });
 
-  var element = document.querySelector(".js-snap-finish");
-  // スクロール時の処理
-  window.addEventListener("scroll", function () {
-    // 要素の位置情報を取得
-    var rect = element.getBoundingClientRect();
-    // 画面の高さ
-    var windowHeight = window.innerHeight;
-    // 要素のtopが画面の真下にきたかどうかを判定
-    var isElementAtBottom = rect.top + 1 <= windowHeight;
-    if (isElementAtBottom) {
-      // p-look__goodsが画面の真下にきたときの処理
-      console.log("p-look__goodsが画面に表示されました。");
-      lookItems.classList.add("is-scroll-fixed");
+    var element = document.querySelector(".js-snap-finish");
+    window.addEventListener("scroll", function() {
+      if (window.innerWidth < 768) return; // 追加: ウィンドウの幅が768px未満の場合は処理を中断
 
-      var infoItems = document.querySelectorAll(".p-photos__details");
-      infoItems.forEach(function (infoItem) {
-        infoItem.classList.remove("-active");
-      });
-    } else {
-      console.log("p-look__goodsが画面から消えました。");
-      lookItems.classList.remove("is-scroll-fixed");
-      var infoItems = document.querySelectorAll(".p-photos__details");
-      let lastItem;
-      infoItems.forEach(function (item, index) {
-        if (index === infoItems.length - 1) {
-          // ループ中に最後の要素を見つける
-          lastItem = item;
-        }
-      });
-      lastItem.classList.add("-active");
-    }
-  });
-}
+      var rect = element.getBoundingClientRect();
+      var windowHeight = window.innerHeight;
+      var isElementAtBottom = rect.top + 1 <= windowHeight;
+
+      if (isElementAtBottom) {
+        lookItems.classList.add("is-scroll-fixed");
+
+        var infoItems = document.querySelectorAll(".p-photos__details");
+        infoItems.forEach(function(infoItem) {
+          infoItem.classList.remove("-active");
+        });
+      } else {
+        lookItems.classList.remove("is-scroll-fixed");
+        
+        var items = document.querySelectorAll(".js-photos__items.-pc");
+        var infoItems = document.querySelectorAll(".p-photos__details");
+        // 各要素に対して処理を行う
+        items.forEach(function (item, index) {
+          var itemHeight = item.getBoundingClientRect().height;
+          var itemTop = item.getBoundingClientRect().top;
+          if (itemTop <= 0 && itemTop > itemHeight * -1) {
+            infoItems[index].classList.add("-active");
+          } else {
+            infoItems[index].classList.remove("-active");
+          }
+        });
+      }
+    });
+  }
+});
+
 /**
 |--------------------------------------------------
 | fv オープニング
@@ -567,3 +565,5 @@ const setFillHeight = () => {
 
 window.addEventListener("resize", setFillHeight); //画面のサイズ変動があった時に高さを再計算
 setFillHeight();
+
+

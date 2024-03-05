@@ -15,6 +15,7 @@
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
         // margin-top: .1px;
+        overscroll-behavior-x: contain;
     }
 }
 
