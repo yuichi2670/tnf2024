@@ -1,4 +1,41 @@
 
+
+/**
+|--------------------------------------------------
+| snap（PC時）
+|--------------------------------------------------
+*/
+
+var lookItems = document.querySelector('.js-snap');
+
+lookItems.addEventListener('scroll', function() {
+  var scrollableHeight = lookItems.scrollHeight - lookItems.clientHeight;
+  var currentScroll = lookItems.scrollTop;
+  if (currentScroll > scrollableHeight + 10) {
+    lookItems.classList.add('is-scroll-fixed');
+  } else {
+    lookItems.classList.remove('is-scroll-fixed');
+  }
+});
+
+var element = document.querySelector('.js-snap-finish');
+// スクロール時の処理
+window.addEventListener('scroll', function() {
+  // 要素の位置情報を取得
+  var rect = element.getBoundingClientRect();
+  // 画面の高さ
+  var windowHeight = window.innerHeight;
+  // 要素のtopが画面の真下にきたかどうかを判定
+  var isElementAtBottom = rect.top + 1 <= windowHeight;
+  if (isElementAtBottom) {
+    // p-look__goodsが画面の真下にきたときの処理
+    console.log('p-look__goodsが画面に表示されました。');
+    lookItems.classList.add('is-scroll-fixed');
+  } else {
+    console.log('p-look__goodsが画面から消えました。');
+    lookItems.classList.remove('is-scroll-fixed')
+  }
+});
 /**
 |--------------------------------------------------
 | fv オープニング
@@ -526,40 +563,7 @@ window.addEventListener("resize", setFillHeight); //画面のサイズ変動が�
 setFillHeight();
 
 
-/**
-|--------------------------------------------------
-| snap（PC時）
-|--------------------------------------------------
-*/
-const snapItems = document.querySelector('.js-snap');
-snapItems.addEventListener('scroll', function() {
-  const scrollableHeight = snapItems.scrollHeight - snapItems.clientHeight;
-  const currentScroll = snapItems.scrollTop;
-  if (currentScroll > scrollableHeight + 10) {
-    snapItems.classList.add('is-scroll-fixed');
-  } else {
-    snapItems.classList.remove('is-scroll-fixed');
-  }
-});
 
-const elementFinish = document.querySelector('.js-snap-finish');
-// スクロール時の処理
-window.addEventListener('scroll', function() {
-  // 要素の位置情報を取得
-  const rect = elementFinish.getBoundingClientRect();
-  // 画面の高さ
-  const windowHeight = window.innerHeight;
-  // 要素のtopが画面の真下にきたかどうかを判定
-  const isElementAtBottom = rect.top + 10 <= windowHeight;
-  if (isElementAtBottom) {
-    // p-look__goodsが画面の真下にきたときの処理
-    console.log('p-look__goodsが画面に表示されました。');
-    snapItems.classList.add('is-scroll-fixed');
-  } else {
-    console.log('p-look__goodsが画面から消えました。');
-    snapItems.classList.remove('is-scroll-fixed')
-  }
-});
 
 // if (gsap && ScrollTrigger) {
 //   let photoScrollTriggers = [];
