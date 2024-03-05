@@ -8,7 +8,7 @@
 
 .p-photos__info {
     color: #fff;
-    position: sticky;
+    position: fixed;
     content: "";
     width: 100%;
     height: auto;
@@ -113,17 +113,15 @@
 }
 
 
-.p-photos__block.is-scroll-fixed {
-    @include mq(md) {
-        overflow-y: hidden;
-    }
-}
-
 .p-photos__items {
     pointer-events: none;
 
     @include mq(md) {
         height: 100vh;
+
+        height: calc(var(--vh, 1vh) * 100);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
     }
 }
 

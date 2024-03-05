@@ -1,6 +1,9 @@
 @use "global" as *;
 
 .p-information {
+    @include mq(md) {
+        padding-top: rem(114);
+    }
 }
 
 .p-information__inner {
@@ -8,7 +11,7 @@
     padding-top: rem(57);
 
     @include mq(md) {
-        padding-top: rem(114);
+        padding-top: rem(0);
     }
 }
 

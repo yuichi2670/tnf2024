@@ -11,10 +11,22 @@
     left: 0;
     width: 100%;
     z-index: -1;
+
+    @include mq(md) {
+        position: relative;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
 }
 
 .p-header.is-hidden {
     opacity: 0;
+
+    @include mq(md) {
+        opacity: 1;
+    }
 }
 
 .p-header__inner {

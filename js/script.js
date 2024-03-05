@@ -22,36 +22,23 @@ gsap.timeline().to(
 | fvを隠すjs-sectionsの中に入ったら隠す
 |--------------------------------------------------
 */
-// const header = document.querySelector(".js-header");
-// gsap.to(header, {
-//   autoAlpha: 0,
-//   visibility: "hidden",
-//   scrollTrigger: {
-//     trigger: header,
-//     start: "bottom top",
-//     // end: "top top",
-//     // markers: true,
-//     toggleActions: "play reverse play reverse",
-//   },
-// })
-
-// スクロールイベントを監視する
 window.addEventListener('scroll', function() {
-  // js-sections要素の上部の位置を取得
-  var sectionsTop = document.querySelector('.js-sections').getBoundingClientRect().top;
-  
-  // js-header要素を取得
+  var hiddenElements = document.querySelectorAll('.js-hidden');
   var header = document.querySelector('.js-header');
-  
-  // js-sections要素の上部がブラウザの上部と一致したかどうかを判定
-  if (sectionsTop <= 0) {
-      // 一致した場合、js-headerにis-hiddenクラスを付与
+  var shouldBeHidden = false;
+  hiddenElements.forEach(function(element) {
+      var elementTop = element.getBoundingClientRect().top;
+      if (elementTop <= 0) {
+          shouldBeHidden = true;
+      }
+  });
+  if (shouldBeHidden) {
       header.classList.add('is-hidden');
   } else {
-      // 一致していない場合、is-hiddenクラスを削除
       header.classList.remove('is-hidden');
   }
 });
+
 
 
 // ScrollTrigger.create({
@@ -438,6 +425,9 @@ document.addEventListener('scroll', function() {
   }
 });
 
+
+
+
 /**
 |--------------------------------------------------
 | archiveのフェードイン
@@ -534,6 +524,42 @@ const setFillHeight = () => {
 
 window.addEventListener("resize", setFillHeight); //画面のサイズ変動があった時に高さを再計算
 setFillHeight();
+
+
+/**
+|--------------------------------------------------
+| snap（PC時）
+|--------------------------------------------------
+*/
+const snapItems = document.querySelector('.js-snap');
+snapItems.addEventListener('scroll', function() {
+  const scrollableHeight = snapItems.scrollHeight - snapItems.clientHeight;
+  const currentScroll = snapItems.scrollTop;
+  if (currentScroll > scrollableHeight + 10) {
+    snapItems.classList.add('is-scroll-fixed');
+  } else {
+    snapItems.classList.remove('is-scroll-fixed');
+  }
+});
+
+const elementFinish = document.querySelector('.js-snap-finish');
+// スクロール時の処理
+window.addEventListener('scroll', function() {
+  // 要素の位置情報を取得
+  const rect = elementFinish.getBoundingClientRect();
+  // 画面の高さ
+  const windowHeight = window.innerHeight;
+  // 要素のtopが画面の真下にきたかどうかを判定
+  const isElementAtBottom = rect.top + 10 <= windowHeight;
+  if (isElementAtBottom) {
+    // p-look__goodsが画面の真下にきたときの処理
+    console.log('p-look__goodsが画面に表示されました。');
+    snapItems.classList.add('is-scroll-fixed');
+  } else {
+    console.log('p-look__goodsが画面から消えました。');
+    snapItems.classList.remove('is-scroll-fixed')
+  }
+});
 
 // if (gsap && ScrollTrigger) {
 //   let photoScrollTriggers = [];
